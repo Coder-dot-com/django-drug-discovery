@@ -1,0 +1,1 @@
+celery -A drug_discovery worker --loglevel=INFO

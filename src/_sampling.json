@@ -1,0 +1,15 @@
+{
+    "run_type": "sampling",
+    "use_cuda": false,
+    "json_out_config": "_sampling.json",
+    "parameters": {
+        "model_file": "d9c55a76-4d41-48b9-86a8-3eece06815a6_TL_reinvent.model",
+        "sample_strategy": "multinomial",
+        "temperature": 1.0,
+        "tb_logdir": "tb_logs",
+        "output_file": "d9c55a76-4d41-48b9-86a8-3eece06815a6_sampling.csv",
+        "num_smiles": 20,
+        "unique_molecules": true,
+        "randomize_smiles": false
+    }
+}

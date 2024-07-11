@@ -1,0 +1,19 @@
+
+run_type = "sampling"
+use_cuda = false  # run on the GPU if true, on the CPU if false
+json_out_config = "_sampling.json"  # write this TOML to JSON
+
+
+[parameters]
+## Mol2Mol: find molecules similar to the provided molecules
+model_file = "/home/u/Desktop/drug_discovery/REINVENT4-main/notebooks/tmp/R4_notebooks_output/TL_reinvent.model.20.chkpt" # my trained model after transfer learning
+sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
+temperature = 1.0 # temperature in multinomial sampling
+tb_logdir = "tb_logs"  # name of the TensorBoard logging directory
+
+output_file = 'sampling0017.csv'  # sampled SMILES and NLL in CSV format
+
+num_smiles = 20  # number of SMILES to be sampled, 1 per input SMILES
+unique_molecules = true  # if true remove all duplicatesd canonicalize smiles
+randomize_smiles = false # if true shuffle atoms in SMILES randomly
+    

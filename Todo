@@ -1,0 +1,70 @@
+-improve admin display of gneeration requests
+-deploy to aws
+
+-test speed of generation from csv on a graphics card spot instance inf1.xlarge and g4
+
+-reenable django security settings
+
+-run transfer learning and generate molecules for target receptor create celery task and run
+
+
+-default cutoff selected as median of values from csv on save of target if there is a csv
+
+-start with antifungals candida and breast cancer receptor?
+    -user selects target then selects cutoff for standard values default is set to mean
+
+
+-create user functionality sign up login and register
+-add in ai credits functionality
+
+-create user dashboard of reports etc...
+
+
+-create new app and ml models to look for off target effects
+
+
+-incorporate fitlers on generated molecules page e.g. synthesisability and optimize for this user chooses  target SA score default is 5 or less
+
+-Later summary as a side panel with ability to click previous questions and edit on target selection flow
+
+to do later
+    # effect_prediction_model =  models.FileField...
+    #predicted_effect units = models.Charfield..
+
+
+-limit input smiles length on user uplaod/input to 500 characters each and display error if over the imit
+
+
+-user checks recieves notification via email once the model is ready and has been trained
+
+-file deletion after period of time (1 day? delete the model and files) cron job (later)
+-(Later) disable form field if user uploads a file
+
+-add limit of 1k molecules check length on backend if over 1k then return relevant message
+
+
+-separate out dependencies for reinvent and django in requirements.txt (later) so can split app up 
+
+
+
+
+-iterate and improve site and features/functionality
+
+
+-create first model based on interest/popularity
+
+-plan more functionality and features
+
+
+
+-later----------
+
+-remember to push url e.g. when a report is generated so user can press back button to access it if they clcik off it (after user functionality has been added)
+
+
+
+
+
+
+
+

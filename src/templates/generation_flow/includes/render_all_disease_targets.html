@@ -1,0 +1,96 @@
+
+<div id="renderMolecules">
+
+    <div id="" class="py-5">
+
+        <h5 class="text-muted">Selected organism: {{generation_request.organism}}</h5>
+
+        <h5 class="text-muted">Selected disease: {{generation_request.disease}}</h5>
+
+        <h3  class="text-center">Select a target</h3>
+
+        <form
+            hx-post={% url "handle_target_post" generation_request.uuid %}
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+            hx-target="#renderMolecules"
+            hx-swap="outerHTML">
+
+
+            <div class="py-5">
+
+                <select name="target" style="opacity:0;"id="selectOrganism" class="form-select d-none">
+
+                    {% for target in targets %}
+
+                        <option value="{{target.id}}" id="option_{{target.id}}" {% if forloop.first %} checked {% endif %}></option>
+                    {% endfor %}
+
+                </select>
+
+
+                <div class="row justify-content-center  p-1" style="gap: 1.5rem !important;">
+
+                    {% for target in targets %}
+                        <div role="button" onclick="SelectDeselectSingle(this);" id="card_{{target.id}}"
+                             class=" card_choice rounded   col-12 col-sm-5 {% if forloop.first %}border-custom {% else %}border-lightgrey{% endif %} " data-option="{{target.id}}" style="min-width:8rem;">
+                            <div style="" class="text-center py-4">
+
+                                <img style="max-width:;max-height:3rem;" src="" alt="">
+
+                                <h4 class="card-title">
+                                    {{target}}
+
+                                </h4>
+                                <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+
+                </div>
+
+
+                <script>
+                    function SelectDeselectSingle(e) {
+                        option_id = "#option_" + e.getAttribute('data-option')
+                        optionToSelect = document.querySelector(option_id)
+                        select_field = document.querySelector('#selectOrganism')
+                        if (optionToSelect.selected){
+                            e.classList.remove('border-custom')
+                            e.classList.add('border-lightgrey')
+                            optionToSelect.selected = false;
+                            select_field.value = ''
+                        } else {
+                            e.classList.add('border-custom')
+                            e.classList.remove('border-lightgrey')
+                            //Remove borders from others not selected
+
+                            options_cards = Array.from(e.parentNode.querySelectorAll('.card_choice'))
+                            for (let i = 0; i < options_cards.length; i++) {
+                                if (options_cards[i] != e){
+                                    options_cards[i].classList.remove('border-custom')
+                                    options_cards[i].classList.add('border-lightgrey')
+                                }
+
+                            }
+                            optionToSelect.selected = true;
+                            classes = e.classList
+
+                        }
+                    };
+                </script>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary justify-content-end">Continue</button>
+            </div>
+        </form>
+
+        <div class="d-flex text-center">
+            <h7 class="text-muted text-center mx-auto">Data is taken from the ChEMBL 34 database which you can access from this link https://www.ebi.ac.uk/chembl/</h7>
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,37 @@
+{% extends "home_site/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <div class="container mt-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5  rounded-top">
+
+            <div class="col-12">
+
+                <h1 class="display-5 fw-bold lh-1 mb-3 text-center">Generate de novo drug like molecules <span class="text-primary text-underline">with AI</span></h1>
+                <div class="d-grid gap-2 d-md-flex justify-content-center">
+                    <button class="btn btn-primary"
+                            hx-get="{% url "molecules_or_target" %}"
+                            hx-target="#renderMolecules"
+                            hx-swap="outerHTML">
+                        Get started
+                    </button>
+                </div>
+            </div>
+
+            <div id="renderMolecules">
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+{% endblock content %}

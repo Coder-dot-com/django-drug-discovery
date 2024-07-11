@@ -1,0 +1,31 @@
+17:37:56 <INFO> Started REINVENT 4.3.5 (C) AstraZeneca 2017, 2023 on 2024-07-08
+17:37:56 <INFO> Command line: /home/u/.local/share/virtualenvs/django-drug-discovery-4bjaqS7N/bin/reinvent -l stage1.log d9c55a76-4d41-48b9-86a8-3eece06815a6_sampling.toml
+17:37:56 <INFO> User u on host u-ASUS-TUF-Gaming-A15-FA507NU-FA507NU
+17:37:56 <INFO> Python version 3.10.12
+17:37:56 <INFO> PyTorch version 2.2.1+cu121, git 6c8c5ad5eaf47a62fafbb4a2747198cbffbf1ff0
+17:37:56 <INFO> PyTorch compiled with CUDA version 12.1
+17:37:56 <INFO> RDKit version 2023.09.5
+17:37:56 <INFO> Platform Linux-6.5.0-41-generic-x86_64-with-glibc2.35
+17:37:56 <INFO> CUDA driver version 535.183.01
+17:37:56 <INFO> Number of PyTorch CUDA devices 1
+17:37:56 <WARN> 'use_cuda' is deprecated, use 'device' instead
+17:37:56 <INFO> Using CPU x86_64
+17:37:56 <INFO> Writing JSON config file to /home/u/Desktop/django-drug-discovery/src/_sampling.json
+17:37:56 <INFO> Starting Sampling
+17:37:56 <ERRO> /home/u/Desktop/django-drug-discovery/src/d9c55a76-4d41-48b9-86a8-3eece06815a6_TL_reinvent.model has invalid hash:
+{ 'comments': [],
+  'creation_date': 0,
+  'date_format': 'UNIX epoch',
+  'hash_id': '173568c36e1fc3d95cab289c7d31ce0b',
+  'hash_id_format': 'xxhash.xxh3_128_hex 3.4.1',
+  'model_id': '55d68f8a81c04f5a86304ebe1723a0ea',
+  'model_id_format': 'uuid.uuid4 3.10.12',
+  'origina_data_source': 'ChEMBL 25',
+  'updates': []}
+17:37:56 <INFO> Number of network parameters: 5,805,602
+17:37:56 <INFO> Using generator Reinvent
+17:37:56 <INFO> Writing sampled SMILES to CSV file d9c55a76-4d41-48b9-86a8-3eece06815a6_sampling.csv
+17:37:56 <INFO> Sampling 20 SMILES from model d9c55a76-4d41-48b9-86a8-3eece06815a6_TL_reinvent.model
+17:37:56 <INFO> Time taken in seconds: 0
+17:37:57 <INFO> Peak main memory usage: 662.031 MiB
+17:37:57 <INFO> Finished REINVENT on 2024-07-08

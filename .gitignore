@@ -1,0 +1,15 @@
+# 
+.env
+.env.db
+!.env-sample
+.env.staging.proxy-companion
+
+*/__pycache__/*
+
+*/tmp/*
+*/tb_logs/*
+**/__pycache__
+*.pyc
+
+*/media/*
+

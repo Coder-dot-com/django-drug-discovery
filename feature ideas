@@ -1,0 +1,21 @@
+Ai drug discovery based on targe. Categorise targets (human targets categorised based on target organ) Other groups viral, bacterial,fungal, protozoa, then type of the organism e.g. Staphlyococcus aureus and then receptor
+e.g. Bacterial->Staphylococcus aureus -> XYZ receptor
+
+Ai drug gneration based on list of compounds (smiles)
+    https://www.reddit.com/r/hacking/comments/lw91c3/csv_file_import_vulnerabilities_python_django/
+    (rename file at the very least)
+    (have upload date)
+    don't turn autoescape off when displaying this csv back to the user
+
+
+-checkbox to predict ic50 ec50 Ki etc... greyed out if not enough data available for the target receptor and corresponding prediction choice
+-and also calculate various other metrics e.g. lipinskis rule of 5
+
+Offtarget effects/toxicity
+(human only) 
+
+
+admet(absorption dsitribution etc..) prediction model
+
+
+Generate ---- Predict (Ic50 etc.., ADMET break down toxicity into type e.g. hepatotoxicity, off target effects) ----(Analyse, lipinskis rule of 5 and other calculations) --- (later on Modify/ligand binding/tweak compound ability)

@@ -1,0 +1,136 @@
+<div id="renderMolecules">
+
+    <div id="" class="py-5">
+        <h3  class="text-center">Enter a target {{generation_request.target.standard_type}} ({{generation_request.target.standard_units}}) cutoff for molecules to include in the training of the AI model</h3>
+
+        <form
+            hx-post='{% url "molecule_count" generation_request.uuid %}'
+            hx-trigger="change, bsSend, click[event.target.matches('#card_1')], click[event.target.matches('#card_2')], click[event.target.matches('#card_3')], click[event.target.matches('#card_4')], click[event.target.matches('#card_1 > div:nth-child(1)')], click[event.target.matches('#card_2 > div:nth-child(1)')], click[event.target.matches('#card_3 > div:nth-child(1)')], click[event.target.matches('#card_4 > div:nth-child(1)')], click[event.target.matches('#card_1 > div:nth-child(1) > h4:nth-child(1)')], click[event.target.matches('#card_2 > div:nth-child(1) > h4:nth-child(1)')], click[event.target.matches('#card_3 > div:nth-child(1) > h4:nth-child(1)')], click[event.target.matches('#card_4 > div:nth-child(1) > h4:nth-child(1)')]"
+
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+            hx-target="#renderMolecules"
+            hx-swap="outerHTML"
+
+            id="formMolecules">
+
+            <input id="checkboxSubmit" type="checkbox"  name="submitted" class="visually-hidden"> </input>
+            <div class="py-5">
+                <div class="row justify-content-center  p-1">
+
+
+                    <select name="type_of_request" style="opacity:0;" name="" id="less_than_or_greater_than" class="form-select d-none">
+
+
+                        <option value="less_than" id="option_1" {% if type_of_request == "less_than" %}selected{% endif %}></option>
+                        <option value="greater_than" id="option_2" {% if type_of_request == "greater_than" %}selected{% endif %}></option>
+                        <option value="less_than_or_equal_to" id="option_3"  {% if type_of_request == "less_than_or_equal_to" %}selected{% endif %}></option>
+                        <option value="greater_than_or_equal_to" id="option_4"  {% if type_of_request == "greater_than_or_equal_to" %}selected{% endif %}></option>
+
+
+                    </select>
+
+
+
+                    <div  class="pb-4 form-outline col-sm-6 col-12" >
+                        <h4 class="form-label" for="typeNumber">{{generation_request.target.standard_type}} ({{generation_request.target.standard_units}})</h4>
+                        <input name="cutoff" type="number" value="{{cutoff}}" id="typeNumber" class="form-control"  style="min-width:8rem;"/>
+                    </div>
+                    <div class="row justify-content-center  p-1" style="gap: 1.5rem !important;">
+
+
+
+
+
+
+                        <div role="button" onclick="SelectDeselectSingle(this);" id="card_1"
+                             class=" card_choice rounded   col-12 col-sm-2 {% if type_of_request == "less_than" %}border-custom {% else %}border-lightgrey{% endif %} " data-option="1" style="min-width:8rem;">
+                            <div style="" class="text-center py-4">
+
+                                <h4 class="card-title">Less than</h4>
+                                <span><</span>
+                            </div>
+                        </div>
+
+
+                        <div role="button" onclick="SelectDeselectSingle(this);" id="card_2"
+                             class=" card_choice rounded   col-12 col-sm-2 {% if type_of_request == "greater_than" %}border-custom {% else %}border-lightgrey{% endif %}" data-option="2" style="min-width:8rem;">
+                            <div style="" class="text-center py-4">
+                                <h4 class="card-title">Greater than</h4>
+                                <span>></span>
+                            </div>
+                        </div>
+
+
+                        <div role="button" onclick="SelectDeselectSingle(this);" id="card_3"
+                             class=" card_choice rounded   col-12 col-sm-2 {% if type_of_request == "less_than_or_equal_to" %}border-custom {% else %}border-lightgrey{% endif %} " data-option="3" style="min-width:8rem;">
+                            <div style="" class="text-center py-4">
+                                <h4 class="card-title">Less than or equal to</h4>
+                                <span><=</span>
+                            </div>
+                        </div>
+
+
+                        <div role="button" onclick="SelectDeselectSingle(this);" id="card_4"
+                             class=" card_choice rounded   col-12 col-sm-2 {% if type_of_request == "greater_than_or_equal_to" %}border-custom {% else %}border-lightgrey{% endif %} " data-option="4" style="min-width:8rem;">
+                            <div style="" class="text-center py-4">
+                                <h4 class="card-title">Greater than or equal to</h4>
+                                <span>>=</span>
+                            </div>
+                        </div>
+
+               
+                        <script>
+                            function SelectDeselectSingle(e) {
+                                option_id = "#option_" + e.getAttribute('data-option')
+                                optionToSelect = document.querySelector(option_id)
+                                select_field = document.querySelector('#less_than_or_greater_than')
+                                {
+                                    e.classList.add('border-custom')
+                                    e.classList.remove('border-lightgrey')
+                                    //Remove borders from others not selected
+
+                                    options_cards = Array.from(e.parentNode.querySelectorAll('.card_choice'))
+                                    for (let i = 0; i < options_cards.length; i++) {
+                                        if (options_cards[i] != e){
+                                            options_cards[i].classList.remove('border-custom')
+                                            options_cards[i].classList.add('border-lightgrey')
+                                        }
+
+                                    }
+                                    optionToSelect.selected = true;
+                                    select_field.value = optionToSelect.value
+                                    classes = e.classList
+
+                                }
+                            };
+                        </script>
+
+
+                    </div>
+
+
+
+                    <div id="moleculeCount" class="my-4 col-12 col-sm-6">
+                        <h4> <span class="text-muted">Molecules found: </span>{{molecule_count}}</h4>
+                        <h7 class="text-muted">Note: The lower the number of molecules the smaller the training dataset and therefore the more limited the insights that can be derived</h7>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" onclick='document.querySelector("#checkboxSubmit").checked = true;form = document.querySelector("#formMolecules"); htmx.trigger(form, "bsSend");' class="btn btn-primary justify-content-end">Continue</button>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+</div>
+
+
+

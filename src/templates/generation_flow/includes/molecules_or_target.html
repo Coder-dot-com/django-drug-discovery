@@ -1,0 +1,93 @@
+
+<div id="renderMolecules">
+
+    <div id="" class="py-5">
+        <h3  class="text-center">How would you like to generate the molecules?</h3>
+
+        <form
+            hx-post={% url "molecules_or_target_post" %}
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+            hx-target="#renderMolecules"
+            hx-swap="outerHTML"
+
+        >
+
+
+            <div class="py-5">
+
+                <select name="type_of_request" style="opacity:0;" name="" id="selectCompoundsOrTarget" class="form-select d-none">
+
+                    <option value="from_target" id="option_1" checked></option>
+                    <option value="from_molecules" id="option_2"></option>
+
+                </select>
+
+
+                <div class="row justify-content-center  p-1" style="gap: 1.5rem !important;">
+
+                    <div role="button" onclick="SelectDeselectSingle(this);" id="card_1"
+                         class=" card_choice rounded   col-12 col-sm-5 border-custom" data-option="1" style="min-width:8rem;">
+                        <div style="" class="text-center py-4">
+
+                            <img style="max-width:;max-height:3rem;" src="" alt="">
+
+                            <h4 class="card-title">Generate molecules based on target</h4>
+                            <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
+                        </div>
+                    </div>
+
+
+                    <div role="button" onclick="SelectDeselectSingle(this);" id="card_2"
+                         class=" card_choice rounded   col-12 col-sm-5 border-lightgrey" data-option="2" style="min-width:8rem;">
+                        <div style="" class="text-center py-4">
+
+                            <img style="max-width:;max-height:3rem;" src="" alt="">
+
+                            <h4 class="card-title">Generate similar molecules using list of SMILES</h4>
+                            <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <script>
+                    function SelectDeselectSingle(e) {
+                        option_id = "#option_" + e.getAttribute('data-option')
+                        optionToSelect = document.querySelector(option_id)
+                        select_field = document.querySelector('#selectCompoundsOrTarget')
+                        if (optionToSelect.selected){
+                            e.classList.remove('border-custom')
+                            e.classList.add('border-lightgrey')
+                            optionToSelect.selected = false;
+                            select_field.value = ''
+                        } else {
+                            e.classList.add('border-custom')
+                            e.classList.remove('border-lightgrey')
+                            //Remove borders from others not selected
+
+                            options_cards = Array.from(e.parentNode.querySelectorAll('.card_choice'))
+                            for (let i = 0; i < options_cards.length; i++) {
+                                if (options_cards[i] != e){
+                                    options_cards[i].classList.remove('border-custom')
+                                    options_cards[i].classList.add('border-lightgrey')
+                                }
+
+                            }
+                            optionToSelect.selected = true;
+                            classes = e.classList
+
+                        }
+                    };
+                </script>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary justify-content-end">Continue</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
