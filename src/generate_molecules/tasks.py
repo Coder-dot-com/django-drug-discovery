@@ -12,6 +12,7 @@ from rdkit.Contrib.SA_Score import sascorer
 import subprocess
 import os
 from datetime import datetime
+import shutil
 
 
 
@@ -31,8 +32,11 @@ def generate_molecule(generation_request):
     
     os.chdir("transfer_learning_models")
     
-    os.mkdir(uuid)
-    
+    try:
+        os.mkdir(uuid)
+    except FileExistsError:
+        shutil.rmtree(uuid)
+        
     os.chdir(uuid)
     
     

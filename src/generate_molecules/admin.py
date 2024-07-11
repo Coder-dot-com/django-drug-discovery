@@ -9,7 +9,7 @@ class GeneratedMoleculeInline(admin.TabularInline):
 # class FromMoleculeInline(admin.TabularInline):
 #     model = FromMolecules
 class GenerationRequestAdmin(admin.ModelAdmin):
-    list_display = ['id', 'datetime_created', 'uuid', 'complete', 'type_of_request', 'organism', 'disease', 'target', 'molecules_plain_text']
+    list_display = ['id', 'datetime_created', 'uuid', 'complete', 'type_of_request', 'organism', 'disease', 'target']
     inlines = [GeneratedMoleculeInline]
 
 admin.site.register(GenerationRequest, GenerationRequestAdmin)
