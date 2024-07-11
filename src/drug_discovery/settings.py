@@ -94,24 +94,18 @@ if str(BASE_DIR) == "/APP/src":
     SITE_ID = int(config('PRODUCTION_SITE_ID'), 0)
     CURRENT_ENVIRONMENT = "production"
 
-#     DATABASES = {
-#     "default": {
-#         "ENGINE": config("SQL_ENGINE"),
-#         "NAME": config("SQL_DATABASE"),
-#         "USER": config("SQL_USER"),
-#         "PASSWORD": config("SQL_PASSWORD"),
-#         "HOST": config("SQL_HOST"),
-#         "PORT": config("SQL_PORT"),
-#         # 'DISABLE_SERVER_SIDE_CURSORS': True,   # <------ Only for PostgreSQL
-#     }
-# }
-    
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+    "default": {
+        "ENGINE": config("SQL_ENGINE"),
+        "NAME": config("SQL_DATABASE"),
+        "USER": config("SQL_USER"),
+        "PASSWORD": config("SQL_PASSWORD"),
+        "HOST": config("SQL_HOST"),
+        "PORT": config("SQL_PORT"),
+        # 'DISABLE_SERVER_SIDE_CURSORS': True,   # <------ Only for PostgreSQL
     }
+}
+
    
 
 
@@ -138,24 +132,19 @@ else:
     CURRENT_ENVIRONMENT = "local"
     
 
-#     DATABASES = {
-#     "default": {
-#         "ENGINE": config("SQL_ENGINE"),
-#         "NAME": config("SQL_DATABASE"),
-#         "USER": config("SQL_USER"),
-#         "PASSWORD": config("SQL_PASSWORD"),
-#         "HOST": config("SQL_HOST"),
-#         "PORT": config("SQL_PORT"),
-#         # 'DISABLE_SERVER_SIDE_CURSORS': True,   # <------ Only for PostgreSQL
-#     }
-# }
-
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+    "default": {
+        "ENGINE": config("SQL_ENGINE"),
+        "NAME": config("SQL_DATABASE"),
+        "USER": config("SQL_USER"),
+        "PASSWORD": config("SQL_PASSWORD"),
+        "HOST": config("SQL_HOST"),
+        "PORT": config("SQL_PORT"),
+        # 'DISABLE_SERVER_SIDE_CURSORS': True,   # <------ Only for PostgreSQL
     }
+}
+
+
    
 
     STATIC_URL = 'static/'

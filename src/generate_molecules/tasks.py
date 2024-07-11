@@ -20,7 +20,7 @@ import shutil
 def generate_molecule(generation_request):
     
 
-    generation_request = GenerationRequest.objects.get(id=224)
+    generation_request = GenerationRequest.objects.get(id=generation_request)
     generation_request.time_started_creating = datetime.now()
     generation_request.save()
 
@@ -32,10 +32,7 @@ def generate_molecule(generation_request):
     
     os.chdir("transfer_learning_models")
     
-    try:
-        os.mkdir(uuid)
-    except FileExistsError:
-        shutil.rmtree(uuid)
+    os.mkdir(uuid)
         
     os.chdir(uuid)
     
