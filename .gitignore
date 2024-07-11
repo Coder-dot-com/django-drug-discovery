@@ -6,7 +6,8 @@
 
 */__pycache__/*
 
-*/tmp/*
+*/tmp/targeting_data/*
+
 */tb_logs/*
 **/__pycache__
 *.pyc
