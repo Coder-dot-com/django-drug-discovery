@@ -1,12 +1,14 @@
--improve admin display of gneeration requests
--deploy to aws
 
--test speed of generation from csv on a graphics card spot instance inf1.xlarge and g4
+
+
+-test speed of generation from csv on a graphics card spot instance inf1.xlarge, g4 and c5 and compare times
 
 -reenable django security settings
 
 -run transfer learning and generate molecules for target receptor create celery task and run
 
+
+-change tasks.py to use correct epoch settings
 
 -default cutoff selected as median of values from csv on save of target if there is a csv
 
@@ -20,6 +22,7 @@
 -create user dashboard of reports etc...
 
 
+-(later)create private s3 bucket and store checkpoints there with url stored in db
 -create new app and ml models to look for off target effects
 
 

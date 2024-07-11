@@ -61,8 +61,8 @@ def generate_molecule(generation_request):
 
     [parameters]
 
-    num_epochs = 30  #can change this based on user input
-    save_every_n_epochs = 2
+    num_epochs = 1  #can change this based on user input
+    save_every_n_epochs = 1
     batch_size = 100
     sample_batch_size = 2000
 
@@ -98,7 +98,7 @@ use_cuda = false  # run on the GPU if true, on the CPU if false
 
 [parameters]
 ## Mol2Mol: find molecules similar to the provided molecules
-model_file = "TL_reinvent.model.30.chkpt" #  trained model after transfer learning can change 20 to user based input
+model_file = "TL_reinvent.model.1.chkpt" #  trained model after transfer learning can change 30 to user based input
 sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
 temperature = 1.0 # temperature in multinomial sampling
 
@@ -145,5 +145,7 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
     generation_request.save()
             
     os.chdir('..')
+    
+    shutil.rmtree(uuid)
     os.chdir('..')
 

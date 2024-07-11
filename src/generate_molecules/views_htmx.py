@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from .models import GenerationRequest, GeneratedMolecule
 
 from .tasks import generate_molecule
@@ -111,13 +111,12 @@ def create_molecule(request, uuid):
 
 def poll_for_request_completion(request, uuid):
     
-    generation_request = GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest,uuid=uuid,complete=True)
     
-    if generation_request.complete:
+    if generation_request:
         context = {'generation_request' : generation_request}        
         return render(request, 'generation_flow/includes/render_molecules.html', context=context)
-    else:
-        return HttpResponse(status=500)
+
     
     
 def restart_creation_flow(request):

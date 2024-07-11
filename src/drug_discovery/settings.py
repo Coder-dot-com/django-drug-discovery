@@ -30,20 +30,20 @@ MEDIA_ROOT = BASE_DIR /'media'
 
 
 #S3 config
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY') 
-# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME') 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY') 
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME') 
 
-# AWS_QUERYSTRING_AUTH = False #For now
+AWS_QUERYSTRING_AUTH = False #For now
 
-# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 
-# AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
-# # s3 static settings
-# AWS_DEFAULT_ACL = 'public-read'
-# AWS_LOCATION = ''
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+# s3 static settings
+AWS_DEFAULT_ACL = 'public-read'
+AWS_LOCATION = ''
 
 SECRET_KEY = config('SECRET_KEY')
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0'] 
@@ -109,11 +109,10 @@ if str(BASE_DIR) == "/APP/src":
    
 
 
-    # STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-    # MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + MEDIA_ROOT     
-    MEDIA_URL = '/media/'
-    STATIC_URL = 'static/'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+    MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + str(MEDIA_ROOT) +"/"
+
 
 
     # STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
@@ -131,26 +130,19 @@ else:
     SITE_ID = int(config('LOCAL_SITE_ID'), 0)
     CURRENT_ENVIRONMENT = "local"
     
-
+    
     DATABASES = {
-    "default": {
-        "ENGINE": config("SQL_ENGINE"),
-        "NAME": config("SQL_DATABASE"),
-        "USER": config("SQL_USER"),
-        "PASSWORD": config("SQL_PASSWORD"),
-        "HOST": config("SQL_HOST"),
-        "PORT": config("SQL_PORT"),
-        # 'DISABLE_SERVER_SIDE_CURSORS': True,   # <------ Only for PostgreSQL
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
 
    
 
-    STATIC_URL = 'static/'
-    
-
-    MEDIA_URL = '/media/'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+    MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + str(MEDIA_ROOT) +"/"
 
     # STRIPE_SECRET_KEY = config('TEST_STRIPE_SECRET_KEY')
     # STRIPE_PUBLIC_KEY = config('TEST_STRIPE_PUBLIC_KEY')
@@ -166,7 +158,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #     #s3
-    # 'storages',
+    'storages',
+    
     'site_settings',
     
     'generate_molecules',
