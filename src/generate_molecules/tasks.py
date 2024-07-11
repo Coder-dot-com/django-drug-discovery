@@ -56,7 +56,7 @@ def generate_molecule(generation_request):
 
     TL_parameters = f"""
     run_type = "transfer_learning"
-    use_cuda = false  # run on the GPU if true, on the CPU if false
+    use_cuda = true  # run on the GPU if true, on the CPU if false
 
 
     [parameters]
@@ -93,7 +93,7 @@ def generate_molecule(generation_request):
 
     sampling_parameters=f"""
 run_type = "sampling"
-use_cuda = false  # run on the GPU if true, on the CPU if false
+use_cuda = true  # run on the GPU if true, on the CPU if false
 
 
 [parameters]
