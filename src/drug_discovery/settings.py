@@ -130,14 +130,17 @@ else:
     SITE_ID = int(config('LOCAL_SITE_ID'), 0)
     CURRENT_ENVIRONMENT = "local"
     
-    
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+    "default": {
+        "ENGINE": config("SQL_ENGINE"),
+        "NAME": config("SQL_DATABASE"),
+        "USER": config("SQL_USER"),
+        "PASSWORD": config("SQL_PASSWORD"),
+        "HOST": config("SQL_HOST"),
+        "PORT": config("SQL_PORT"),
+        # 'DISABLE_SERVER_SIDE_CURSORS': True,   # <------ Only for PostgreSQL
     }
-
+}
    
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'

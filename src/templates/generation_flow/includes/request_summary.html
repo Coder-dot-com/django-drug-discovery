@@ -49,7 +49,14 @@
                                 hx-swap="outerHTML"
                                 >Restart request</button>
 
-                                <button class="btn btn-primary my-2" > Generate molecules</button><br>
+                                <button class="btn btn-primary my-2" 
+                                hx-get={% url "create_molecule" generation_request.uuid %}
+                                hx-target="#renderMolecules"
+                                hx-swap="outerHTML"                                
+                                > 
+                                    Generate molecules
+                                </button>
+                                <br>
                         </div>
                         <h7 class="text-muted">Note: The lower the number of molecules the smaller the training dataset and therefore the more limited the insights that can be derived</h7>
                     </div>

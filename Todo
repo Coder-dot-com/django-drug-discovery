@@ -5,8 +5,7 @@
 
 -reenable django security settings
 
--run transfer learning and generate molecules for target receptor create celery task and run
-
+-later store target_data csv in private s3 bucket and download to server as required then delete for now use public bucket as data is publically available
 
 -change tasks.py to use correct epoch settings
 

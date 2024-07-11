@@ -14,7 +14,7 @@ urlpatterns = [
     path("molecule_count/<uuid>", views_from_target.molecule_count, name="molecule_count"),
     
     path("restart_creation_flow/", views_htmx.restart_creation_flow, name="restart_creation_flow"),
-
+    path("create_molecule/<uuid>", views_htmx.create_molecule, name="create_molecule"),
 
     path("poll_for_request_completion/<uuid>", views_htmx.poll_for_request_completion, name="poll_for_request_completion"),
 

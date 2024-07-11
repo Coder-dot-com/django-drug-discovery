@@ -4,6 +4,11 @@ import pandas as pd
 from drug_discovery.settings import BASE_DIR
 from django.utils.datastructures import MultiValueDictKeyError
 
+
+import boto3
+s3 = boto3.client('s3')
+from drug_discovery.settings import AWS_STORAGE_BUCKET_NAME
+
 def render_targets_organism(request, generation_request_id):
     generation_request =  GenerationRequest.objects.get(id=generation_request_id)
     
@@ -104,8 +109,15 @@ def render_cutoffs(request, uuid):
     type_of_request = target.default_comparator
     cutoff = float(target.default_standard_value_cutoff)
 
-    df = pd.read_csv(str(BASE_DIR) + str(target.training_data.url))   
-    
+    file_path = f'{BASE_DIR}/tmp/{target.training_data}'
+
+    try:
+        df = pd.read_csv(file_path)   
+    except FileNotFoundError:
+        s3.download_file(AWS_STORAGE_BUCKET_NAME, str(target.training_data), file_path)
+        df = pd.read_csv(file_path)   
+        
+        
     if type_of_request == "less_than":
         df = df.loc[(df['Standard Value'] < cutoff)]
         molecule_count = df.count()[0]
@@ -144,9 +156,15 @@ def molecule_count(request, uuid):
     
     type_of_request = request.POST['type_of_request']
     cutoff = float(request.POST['cutoff'])
-    print(request.POST)
-    
-    df = pd.read_csv(str(BASE_DIR) + str(target.training_data.url))   
+
+    file_path = f'{BASE_DIR}/tmp/{target.training_data}'
+
+    try:
+        df = pd.read_csv(file_path)   
+    except FileNotFoundError:
+        s3.download_file(AWS_STORAGE_BUCKET_NAME, str(target.training_data), file_path)
+        df = pd.read_csv(file_path)   
+        
     
     if type_of_request == "less_than":
         df = df.loc[(df['Standard Value'] < cutoff)]
@@ -178,6 +196,18 @@ def molecule_count(request, uuid):
         generation_request.comparator = type_of_request
         generation_request.standard_value_cutoff = cutoff
         generation_request.molecules_ai_trained_on = molecule_count
+        
+        # generation_request.molecules_plain_text
+        try:
+            df.columns = df.columns.str.lower()
+            smiles = df['smiles'].values.tolist()
+        except KeyError:
+            smiles = df.iloc[:, 0]
+            
+                
+        smiles = "\n".join(smiles)
+        
+        generation_request.molecules_plain_text = smiles
         generation_request.save()
         
         context = {'generation_request': generation_request,

@@ -58,7 +58,7 @@ class GenerationRequest(models.Model):
     type_of_request = models.CharField(choices=choices, max_length=100)
     
     #from_molecules
-    molecules_plain_text = models.CharField(max_length=1000000, null=True, blank=True)
+    molecules_plain_text = models.TextField(max_length=1000000, null=True, blank=True)
 
     organism = models.ForeignKey(Organism, null=True, blank=True, on_delete=models.SET_NULL)
     disease = models.ForeignKey(Disease, null=True, blank=True, on_delete=models.SET_NULL)
