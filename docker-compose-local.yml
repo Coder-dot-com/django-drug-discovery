@@ -29,7 +29,13 @@ services:
       - app
     env_file:
       - .env
-
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   # celery-beat:
   #   restart: always
   #   build:
@@ -64,10 +70,10 @@ services:
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    # environment:
-    #   - POSTGRES_USER=hello_django
-    #   - POSTGRES_PASSWORD=hello_django
-    #   - POSTGRES_DB=hello_django_dev
+    environment:
+      - POSTGRES_USER=hello_django
+      - POSTGRES_PASSWORD=hello_django
+      - POSTGRES_DB=hello_django_dev
 
 volumes:
   postgres_data:
