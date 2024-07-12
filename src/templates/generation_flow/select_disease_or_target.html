@@ -5,7 +5,7 @@
     <div id="" class="py-5">
 
 
-        <h3  class="text-center my-2">Select a target {% if generation_request.organism.organism == "Homo sapien" %} or disease {% endif %}</h3>
+        <h3  class="text-center my-2 mb-3">Select a target {% if generation_request.organism.organism == "Homo sapien" %} or disease {% endif %}</h3>
 
         <form
             hx-post={% url "handle_disease_target_post" generation_request.uuid %}

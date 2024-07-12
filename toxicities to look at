@@ -1,0 +1,25 @@
+Liver toxicity
+-https://www.ebi.ac.uk/chembl/web_components/explore/activities/STATE_ID:0vLOBQTdYdxJ-ApLWWoRTw%3D%3D
+-if less than 0 toxic, greater than or equal to 0 not toxic
+-predicted inhibition of HepG2, at 10uM 
+
+
+
+Mammallian fibroblast
+https://www.ebi.ac.uk/chembl/assay_report_card/CHEMBL1613794/
+-filter for ianctive and active compounds
+-classify as active or ianctive
+
+
+
+Cytotoxicity % cell death
+
+https://www.ebi.ac.uk/chembl/assay_report_card/CHEMBL3301484/
+-predicted percent cell death after 7 days at 5mM millimolar
+
+
+https://www.ebi.ac.uk/chembl/assay_report_card/CHEMBL3301476/
+-predicted percent cell death after 3 days at 5mM millimolar
+
+
+

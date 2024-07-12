@@ -2,7 +2,7 @@
 
     <h7 class="text-muted mt-2 mb-5">Target selection > Selected organism: {{generation_request.organism}} > Selected disease: {{generation_request.disease}}</h7>
     <div id="" class="py-5">
-        <h3  class="text-center my-2">Enter a target {{generation_request.target.standard_type}} ({{generation_request.target.standard_units}}) cutoff for molecules to include in the training of the AI model</h3>
+        <h3  class="text-center my-2 mb-3">Enter a target {{generation_request.target.standard_type}} ({{generation_request.target.standard_units}}) cutoff for molecules to include in the training of the AI model</h3>
 
         <form
             hx-post='{% url "molecule_count" generation_request.uuid %}'

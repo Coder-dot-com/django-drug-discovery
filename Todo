@@ -1,6 +1,4 @@
 
--add request summary to generate based off of list of molecules
-
 
 
 -Add more values to displayed molecules e.g. predicted ADMET, synthesisability heading and under this various scores, etc.... Add in models that predict toxicity? new app?
