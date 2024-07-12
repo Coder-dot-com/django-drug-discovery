@@ -2,7 +2,7 @@
 <div id="renderMolecules">
 
     <div id="" class="py-5">
-        <h3  class="text-center">Upload a CSV containing SMILES or copy and paste SMILES in to the box below.</h3>
+        <h3  class="text-center my-2">Upload a CSV containing SMILES or copy and paste SMILES in to the box below.</h3>
 
         <form
             hx-post={% url "from_molecules_post" generation_request.uuid %}
@@ -19,10 +19,10 @@
                          class=" card_choice rounded   col-12 col-sm-5 border-custom" data-option="1" style="min-width:8rem;">
                         <div style="" class="text-center py-4">
 
-                            <img style="max-width:;max-height:3rem;" src="" alt="">
+                            
 
                             <h4 class="card-title">Upload CSV of SMILES</h4>
-                            <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
+                            
 
                             <input name="moleculecsvfile" type="file" accept=".csv" class="form-control"/>
 
@@ -50,11 +50,11 @@
                          class=" card_choice rounded   col-12 col-sm-5 border-custom" data-option="2" style="min-width:8rem;">
                         <div style="" class="text-center py-4">
 
-                            <img style="max-width:;max-height:3rem;" src="" alt="">
+                            
 
                             <h4 class="card-title">Copy and paste SMILES</h4>
                             <p class="text-muted">Paste each SMILES formula on to a new line</p>
-                            <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
+                            
 
                             <textarea name="SMILES" id="" rows="7" class="w-100" ></textarea>
 
@@ -111,6 +111,7 @@
                 <button class="btn btn-primary justify-content-end">Continue</button>
             </div>
         </form>
+        
 
     </div>
 

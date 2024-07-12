@@ -1,52 +1,53 @@
 
 <div id="renderMolecules">
 
+    <h7 class="text-muted mt-2 mb-5">Select target > Selected organism: {{generation_request.organism}}</h7>
     <div id="" class="py-5">
-        <h3  class="text-center">How would you like to generate the molecules?</h3>
+
+
+        <h3  class="text-center my-2">Select a target {% if generation_request.organism.organism == "Homo sapien" %} or disease {% endif %}</h3>
 
         <form
-            hx-post={% url "molecules_or_target_post" %}
+            hx-post={% url "handle_disease_target_post" generation_request.uuid %}
             hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
             hx-target="#renderMolecules"
-            hx-swap="outerHTML"
-
-        >
+            hx-swap="outerHTML">
 
 
             <div class="py-5">
 
-                <select name="type_of_request" style="opacity:0;" name="" id="selectCompoundsOrTarget" class="form-select d-none">
+                <select name="target" style="opacity:0;"id="selectOrganism" class="form-select d-none">
 
-                    <option value="from_target" id="option_1" checked></option>
-                    <option value="from_molecules" id="option_2"></option>
+                    {% for target in targets %}
+
+                        <option value="{{target.id}}" id="option_{{target.id}}" {% if forloop.first %} checked {% endif %}></option>
+                    {% endfor %}
 
                 </select>
 
 
                 <div class="row justify-content-center  p-1" style="gap: 1.5rem !important;">
 
-                    <div role="button" onclick="SelectDeselectSingle(this);" id="card_1"
-                         class=" card_choice rounded   col-12 col-sm-5 border-custom" data-option="1" style="min-width:8rem;">
-                        <div style="" class="text-center py-4">
+                    {% for target in targets %}
+                        <div role="button" onclick="SelectDeselectSingle(this);" id="card_{{target.id}}"
+                             class=" card_choice rounded   col-12 col-sm-5 {% if forloop.first %}border-custom {% else %}border-lightgrey{% endif %} " data-option="{{target.id}}" style="min-width:8rem;">
+                            <div style="" class="text-center py-4">
 
-                            <img style="max-width:;max-height:3rem;" src="" alt="">
+                                
 
-                            <h4 class="card-title">Generate molecules based on target</h4>
-                            <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
+                                <h4 class="card-title">
+                                    {% if target.disease %}
+                                        {{target.disease}}
+                                    {% else %}
+                                        {{target}}
+                                    {% endif %}
+
+                                </h4>
+                                
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
 
-
-                    <div role="button" onclick="SelectDeselectSingle(this);" id="card_2"
-                         class=" card_choice rounded   col-12 col-sm-5 border-lightgrey" data-option="2" style="min-width:8rem;">
-                        <div style="" class="text-center py-4">
-
-                            <img style="max-width:;max-height:3rem;" src="" alt="">
-
-                            <h4 class="card-title">Generate similar molecules using list of SMILES</h4>
-                            <img class="rounded" style="max-width:4rem;max-height:4rem;" src="" alt="">
-                        </div>
-                    </div>
 
 
                 </div>
@@ -56,7 +57,7 @@
                     function SelectDeselectSingle(e) {
                         option_id = "#option_" + e.getAttribute('data-option')
                         optionToSelect = document.querySelector(option_id)
-                        select_field = document.querySelector('#selectCompoundsOrTarget')
+                        select_field = document.querySelector('#selectOrganism')
                         if (optionToSelect.selected){
                             e.classList.remove('border-custom')
                             e.classList.add('border-lightgrey')
@@ -86,6 +87,11 @@
                 <button class="btn btn-primary justify-content-end">Continue</button>
             </div>
         </form>
+
+        <div class="d-flex text-center">
+            <h7 class="text-muted text-center mx-auto">Data is taken from the ChEMBL 34 database which you can access from this link https://www.ebi.ac.uk/chembl/</h7>
+        </div>
+
 
     </div>
 

@@ -19,7 +19,7 @@ def render_targets_organism(request, generation_request_id):
                'organisms': organisms,
                }
 
-    return render(request, "generation_flow/includes/from_target_organism.html", context=context)
+    return render(request, "generation_flow/from_target_organism.html", context=context)
 
 
 
@@ -62,7 +62,7 @@ def render_diseases_and_any_targets(request, uuid):
                'targets': targets,
                } 
     
-    return render(request, "generation_flow/includes/select_disease_or_target.html", context=context)
+    return render(request, "generation_flow/select_disease_or_target.html", context=context)
     
 
 
@@ -83,7 +83,7 @@ def handle_disease_target_post(request, uuid):
         
         context['targets'] = targets
         
-        return render(request, "generation_flow/includes/render_all_disease_targets.html", context=context)
+        return render(request, "generation_flow/render_all_disease_targets.html", context=context)
     
     
     generation_request.target = target
@@ -140,7 +140,7 @@ def render_cutoffs(request, uuid):
                'cutoff': cutoff,
                }
         
-    return render(request, "generation_flow/includes/render_cutoffs.html", context=context)
+    return render(request, "generation_flow/render_cutoffs.html", context=context)
 
 
 def molecule_count(request, uuid):
@@ -190,7 +190,7 @@ def molecule_count(request, uuid):
                 
                 }
     
-        return render(request, "generation_flow/includes/render_cutoffs.html", context=context)
+        return render(request, "generation_flow/render_cutoffs.html", context=context)
 
     else:
         generation_request.comparator = type_of_request
@@ -213,6 +213,6 @@ def molecule_count(request, uuid):
         context = {'generation_request': generation_request,
           
                 }
-        return render(request, "generation_flow/includes/request_summary.html", context=context)
+        return render(request, "generation_flow/request_summary.html", context=context)
 
 

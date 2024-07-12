@@ -10,7 +10,7 @@ from .views_from_target import render_targets_organism
 from django.db import transaction
 
 def molecules_or_target(request):
-    return render(request, 'generation_flow/includes/molecules_or_target.html')
+    return render(request, 'generation_flow/molecules_or_target.html')
 
 
 
@@ -22,7 +22,7 @@ def molecules_or_target_post(request):
     context = {'generation_request': generation_request}
     
     if type_of_request == "from_molecules":
-        return render(request, "generation_flow/includes/from_molecules.html", context=context)
+        return render(request, "generation_flow/from_molecules.html", context=context)
     
     elif type_of_request == "from_target":
         return render_targets_organism(request, generation_request_id=generation_request.id)
@@ -106,7 +106,7 @@ def create_molecule(request, uuid):
     
     context = {'generation_request' : generation_request}
     
-    return render(request, 'generation_flow/includes/render_molecules.html', context=context)
+    return render(request, 'generation_flow/render_molecules.html', context=context)
 
 
 def poll_for_request_completion(request, uuid):
@@ -115,7 +115,7 @@ def poll_for_request_completion(request, uuid):
     
     if generation_request:
         context = {'generation_request' : generation_request}        
-        return render(request, 'generation_flow/includes/render_molecules.html', context=context)
+        return render(request, 'generation_flow/render_molecules.html', context=context)
 
     
     
