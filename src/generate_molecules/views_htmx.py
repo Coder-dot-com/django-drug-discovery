@@ -10,7 +10,8 @@ from .views_from_target import render_targets_organism
 from django.db import transaction
 
 def molecules_or_target(request):
-    return render(request, 'generation_flow/molecules_or_target.html')
+    context = {'hide_restart_button': True}
+    return render(request, 'generation_flow/molecules_or_target.html', context=context)
 
 
 
@@ -70,12 +71,12 @@ def from_molecules_post(request, uuid):
             #create and save to database
         else:
             
-            return HttpResponse(f" Incorrect file type, file type should be csv not {type_of_file}")
+            return HttpResponse(f" Incorrect file type, file type should be csv not {type_of_file}. Reload the page to try again")
     except AttributeError: #means no file uploaded check for copy and pasted text
         
         smiles = (request.POST['SMILES'])
         if not smiles:
-            return HttpResponse("Please ensure you upload csv or enter smiles") 
+            return HttpResponse("Please ensure you upload a csv or enter smiles. Reload the page to try again") 
         else:
             #validate smiles #split on /n
             list_of_smiles = smiles.split('\n')
@@ -87,14 +88,22 @@ def from_molecules_post(request, uuid):
                 if not mol:
                     return HttpResponse(f"Please check the molecules provided are correct, specifically {list_of_smiles[i]}")
             
+
+
     
     generation_request.molecules_plain_text = smiles
+    generation_request.molecules_ai_trained_on = len(list_of_smiles)
     generation_request.save()
     
-        
-        
+    #Here render summary
     
-    return create_molecule(request, uuid)
+    context = {'generation_request': generation_request,     
+            }
+    return render(request, "generation_flow/request_summary.html", context=context)
+
+
+
+        
 
 
 

@@ -1,31 +1,36 @@
 
+-add request summary to generate based off of list of molecules
 
 
--test speed of generation from csv on a graphics card spot instance inf1.xlarge, g4 and c5 and compare times
 
--reenable django security settings
+-Add more values to displayed molecules e.g. predicted ADMET, synthesisability heading and under this various scores, etc.... Add in models that predict toxicity? new app?
 
--later store target_data csv in private s3 bucket and download to server as required then delete for now use public bucket as data is publically available
 
--change tasks.py to use correct epoch settings
-
--default cutoff selected as median of values from csv on save of target if there is a csv
-
--start with antifungals candida and breast cancer receptor?
-    -user selects target then selects cutoff for standard values default is set to mean
-
+incorporate fitlers on generated molecules page e.g. synthesisability and optimize for this user chooses  target SA score default is 5 or less
 
 -create user functionality sign up login and register
--add in ai credits functionality
-
 -create user dashboard of reports etc...
 
+
+-user checks recieves notification via email once the model is ready and has been trained
+
+-add in ai credits functionality
+
+
+
+-reenable django security settings before dploying to production and go through checklist
+    --change tasks.py to use correct epoch settings
+
+
+-later store target_data csv in private s3 bucket and download to server as required then delete for now use public bucket as data is publically available
 
 -(later)create private s3 bucket and store checkpoints there with url stored in db
 -create new app and ml models to look for off target effects
 
 
--incorporate fitlers on generated molecules page e.g. synthesisability and optimize for this user chooses  target SA score default is 5 or less
+
+
+
 
 -Later summary as a side panel with ability to click previous questions and edit on target selection flow
 
@@ -37,7 +42,6 @@ to do later
 -limit input smiles length on user uplaod/input to 500 characters each and display error if over the imit
 
 
--user checks recieves notification via email once the model is ready and has been trained
 
 -file deletion after period of time (1 day? delete the model and files) cron job (later)
 -(Later) disable form field if user uploads a file

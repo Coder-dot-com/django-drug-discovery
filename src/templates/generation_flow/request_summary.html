@@ -8,6 +8,12 @@
 
 
                 <p class="px-4">
+
+                    Request type: <b>{{generation_request.type_of_request}}</b>
+
+                    {% if generation_request.type_of_request == "from_target" %}
+
+                    <br>
                     Organism: <b>{{generation_request.organism}}</b>
                     {% if generation_request.disease %}
                     <br>
@@ -30,6 +36,14 @@
                     {% endif %}
                     {{generation_request.standard_value_cutoff}} ({{generation_request.target.standard_units}}) 
                     </b>
+
+                    {% else %}
+                    <br>
+                    Molecules similar to those you have uploaded will be generated.
+
+
+                    {% endif %}
+
 
                     <br>
                     Molecules AI will be trained on: <b>{{generation_request.molecules_ai_trained_on}}</b>

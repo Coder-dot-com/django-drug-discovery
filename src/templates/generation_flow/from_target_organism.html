@@ -73,14 +73,12 @@
                     };
                 </script>
             </div>
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-primary justify-content-end">Continue</button>
-            </div>
+
+            {% include "generation_flow/includes/continue_restart_button.html" %}
         </form>
 
-        <div class="d-flex text-center">
-            <h7 class="text-muted text-center mx-auto">Data is taken from the ChEMBL 34 database which you can access from this link https://www.ebi.ac.uk/chembl/</h7>
-        </div>
+
+        {% include "generation_flow/includes/chembl_note.html" %}
 
     </div>
 
