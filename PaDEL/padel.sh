@@ -1,0 +1,2 @@
+#!/bin/sh
+java -Xms1G -Xmx1G -Djava.awt.headless=true -jar ./PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes ./PaDEL-Descriptor/PubchemFingerprinter.xml -dir  $1 -file descriptors_output.csv

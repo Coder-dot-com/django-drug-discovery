@@ -1,1 +1,2 @@
 celery -A drug_discovery worker --loglevel=INFO
+chmod +x PaDEL/padel.sh 

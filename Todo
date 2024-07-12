@@ -1,8 +1,12 @@
+-calculate predicted value if user selects a target
+    -on save of a target train model on save (checkbox triggered)
+    -calls celery function to train model and store in s3(can be public bucket for now)
+    
 
 
+-calculate lipinskis rule of 5 for each molecule and display
 
--Add more values to displayed molecules e.g. predicted ADMET, synthesisability heading and under this various scores, etc.... Add in models that predict toxicity? new app?
-
+-calculate/predict toxicity/train models for this
 
 incorporate fitlers on generated molecules page e.g. synthesisability and optimize for this user chooses  target SA score default is 5 or less
 
