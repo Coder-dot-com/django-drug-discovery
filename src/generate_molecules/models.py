@@ -20,9 +20,18 @@ class Target(models.Model):
     disease = models.ForeignKey(Disease, null=True, blank=True, on_delete=models.SET_NULL)
     receptor = models.CharField(max_length=1000, null=True, blank=True)
     chembl_id = models.CharField(max_length=1000)
-    training_data = models.FileField(upload_to="target_data/", null=True, blank=True)
+    training_data = models.FileField(upload_to="target_data/training_data/", null=True, blank=True)
     standard_type = models.CharField(max_length=1000, null=True, blank=True)
     standard_units = models.CharField(max_length=1000, null=True, blank=True)
+    
+    choices = (
+        ("not_created", "not_created"),
+        ("not_enough_data", "not_enough_data")
+        ("added", "added")
+        
+        )
+    predictive_model_state = models.CharField(choices=choices,max_length=100, default="not_created")
+    predictive_model = models.FileField(upload_to="target_data/predictive_models/", null=True, blank=True)
     
     comparator_choices = (
         ("less_than", 'less_than'),

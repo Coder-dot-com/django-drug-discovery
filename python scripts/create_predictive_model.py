@@ -4,18 +4,8 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, Lipinski
 
      
-# df = pd.read_csv('/home/u/Desktop/django-drug-discovery/python scripts/Breast Cancer cleaned data.csv', sep=',', on_bad_lines='skip')
 
     
-
-# df = df.dropna(subset=['Smiles'])
-
-# df = df.dropna(subset=['Standard Type'])
-# df = df.dropna(subset=['Standard Value'])
-
-# df = df.dropna(subset=['Standard Units'])
-# df = df.drop_duplicates(['Smiles'])
-
 
 # def lipinski(smiles, verbose=False):
 
@@ -48,6 +38,7 @@ from rdkit.Chem import Descriptors, Lipinski
 #     return descriptors
 
 
+df = pd.read_csv('/home/u/Desktop/django-drug-discovery/python scripts/Breast Cancer cleaned data.csv', sep=',', on_bad_lines='skip')
 
 
 # df_lipinski = lipinski(df['Smiles'])
@@ -65,7 +56,38 @@ from rdkit.Chem import Descriptors, Lipinski
 import subprocess
 import os
 
-print(os.listdir())
 
-os.chdir("PaDEL/")
-subprocess.check_call(['./padel.sh', './test'])
+# os.chdir("PaDEL/")
+# subprocess.check_call(['./padel.sh', './test'])
+
+
+df_X = pd.read_csv('/home/u/Desktop/django-drug-discovery/PaDEL/test/descriptors_output.csv')
+df_X = df_X.drop(columns=['Name'])
+
+df_Y = df['Standard Value']
+
+dataset = pd.concat([df_X,df_Y], axis=1)
+
+# print(df_Y)
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.feature_selection import VarianceThreshold
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+import lazypredict
+from lazypredict.Supervised import LazyRegressor
+
+selection = VarianceThreshold(threshold=(0.1))    
+X = selection.fit_transform(df_X)
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, df_Y, test_size=0.2, random_state=17)
+
+clf = LazyRegressor(verbose=0,ignore_warnings=True, custom_metric=None)
+models_train, predictions_train = clf.fit(X_train, X_train, Y_train, Y_train)
+models_test, predictions_test = clf.fit(X_train, X_test, Y_train, Y_test)
+
+# print(predictions_train)
+
+print(predictions_test)

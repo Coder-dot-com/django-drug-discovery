@@ -1,6 +1,4 @@
--calculate predicted value if user selects a target
-    -on save of a target train model on save (checkbox triggered)
-    -calls celery function to train model and store in s3(can be public bucket for now)
+
     
 
 
@@ -70,7 +68,9 @@ to do later
 -remember to push url e.g. when a report is generated so user can press back button to access it if they clcik off it (after user functionality has been added)
 
 
-
+-(later once access to more data review) calculate predicted value if user selects a target
+    -on save of a target train model on save (checkbox triggered)
+    -calls celery function to train model and store in s3(can be public bucket for now)
 
 
 
