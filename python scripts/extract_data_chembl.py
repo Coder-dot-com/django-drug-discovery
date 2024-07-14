@@ -26,19 +26,18 @@ from chembl_webresource_client.new_client import new_client
 
 
      
-df = pd.read_csv('/home/u/Desktop/django-drug-discovery/python scripts/Breast cancer type 1 susceptibility protein - Potency.csv', sep=';', on_bad_lines='warn')
+df = pd.read_csv('/home/u/Desktop/django-drug-discovery/python scripts/Hepatocyte growth factor receptor) - IC50.csv', sep=';', on_bad_lines='warn')
 
-    
-options = ['Active', 'active']
 
-df = df.loc[df['Comment'].isin(options)]
+options = ["'='"]
+df = df.loc[df['Standard Relation'].isin(options)]
 
-# print(df)
 
-    
 df = df[['Smiles', 'Standard Type', 'Standard Value', 'Standard Units', 'Molecule ChEMBL ID']]
 
-print(df)
+options = ["IC50"]
+df = df.loc[df['Standard Type'].isin(options)]
+
 
 
 df = df.dropna(subset=['Smiles'])
@@ -47,16 +46,24 @@ df = df.dropna(subset=['Standard Type'])
 df = df.dropna(subset=['Standard Value'])
 
 df = df.dropna(subset=['Standard Units'])
+df = df.dropna(subset=['Molecule ChEMBL ID'])
+
+
+
+
+
+
 df = df.drop_duplicates(['Smiles'])
 
 
-options = ['nM']
+options = ["nM"]
 
 df = df.loc[df['Standard Units'].isin(options)]
 
 
 print(df)
-df.to_csv("Breast Cancer cleaned data.csv", index=False)
 
-# 2,13
+
+df.to_csv("Hepatocyte Growth Factor Cleaned data.csv", index=False)
+
 

@@ -1,15 +1,13 @@
 
-    
+-calculate molecules values based on specific descriptors (see email)
 
-
--calculate lipinskis rule of 5 for each molecule and display
-
--calculate/predict toxicity/train models for this
-
-incorporate fitlers on generated molecules page e.g. synthesisability and optimize for this user chooses  target SA score default is 5 or less
 
 -create user functionality sign up login and register
 -create user dashboard of reports etc...
+
+incorporate fitlers on generated molecules page e.g. synthesisability 
+
+
 
 
 -user checks recieves notification via email once the model is ready and has been trained
@@ -22,6 +20,9 @@ incorporate fitlers on generated molecules page e.g. synthesisability and optimi
     --change tasks.py to use correct epoch settings
 
 
+
+-(later)ability to optimize for various filter e.g. user chooses  target SA score default is 5 or less
+
 -later store target_data csv in private s3 bucket and download to server as required then delete for now use public bucket as data is publically available
 
 -(later)create private s3 bucket and store checkpoints there with url stored in db
@@ -30,6 +31,7 @@ incorporate fitlers on generated molecules page e.g. synthesisability and optimi
 
 
 
+-(later need better data)calculate/predict toxicity/train models for this
 
 
 -Later summary as a side panel with ability to click previous questions and edit on target selection flow
