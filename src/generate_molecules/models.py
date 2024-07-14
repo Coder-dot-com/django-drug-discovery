@@ -89,4 +89,25 @@ class GeneratedMolecule(models.Model):
     generation_request = models.ForeignKey(GenerationRequest, on_delete=models.CASCADE)
     smile_identifier = models.CharField(max_length=1000)
     molecular_structure = models.ImageField(upload_to="molecular_structures/")
+    
+    
+    #Physicochemical properties
+    molecular_formula = models.CharField(max_length=1000, default="error")
+    molecular_weight  = models.FloatField(default=0)
+    #upto here
+    H_bond_acceptors = models.IntegerField(default=0)
+    H_bond_donors = models.IntegerField(default=0)
+    rotatable_bonds  = models.IntegerField(default=0)
+
+
+    #druglikeness seperate out for each score
+    
+    
+    
+    
+    #Synthesisability
+    
     synthetic_accessibility_score = models.DecimalField(decimal_places=3,max_digits=100)
+    
+    
+    #liphophilicity

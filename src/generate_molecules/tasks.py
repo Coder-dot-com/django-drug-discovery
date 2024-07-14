@@ -5,8 +5,7 @@ import pandas as pd
 from io import BytesIO
 from django.core.files import File
 
-
-
+from rdkit.Chem import rdMolDescriptors
 from rdkit.Contrib.SA_Score import sascorer
 
 import subprocess
@@ -46,17 +45,12 @@ def generate_molecule(generation_request):
     n_head = len(data) // 5
     n_tail = len(df) - n_head
     
-    
-    print(data)
-    
-    print(n_head)
-    print(n_tail)
+
     
     
     train, validation = data.head(n_head), data.tail(n_tail)
     
-    print('train', train)
-    print('validation', validation)
+
 
     train.to_csv(TL_train_filename, sep="\t", index=False, header=False)
     validation.to_csv(TL_validation_filename, sep="\t", index=False, header=False)
@@ -140,14 +134,25 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
         smile = smiles[i]
         m = Chem.MolFromSmiles(smile)
         img = Draw.MolToImage(m, size=(1000,1000))
+        img_io = BytesIO()
+        img.save(img_io, 'png')
         
+        #Physicochemical properties
         
+        molecular_formula =  rdMolDescriptors.CalcMolFormula(m)
+        molecular_weight = rdMolDescriptors.CalcExactMolWt(m)
+                  
+        
+        #synthesisability
         s = sascorer.calculateScore(m)
     
-        img_io = BytesIO()
-        img.save(img_io, 'png')          
         GeneratedMolecule.objects.create(generation_request=generation_request,smile_identifier=smile, 
                                          molecular_structure=File(img_io, name=f"{generation_request.uuid}_{i}.png"),
+                                         #physicochemical properties
+                                         
+                                         molecular_formula=molecular_formula,
+                                         molecular_weight=molecular_weight,
+                                         
                                          synthetic_accessibility_score=s
                                          )
 

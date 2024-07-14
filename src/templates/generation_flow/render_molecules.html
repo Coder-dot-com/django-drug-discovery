@@ -18,13 +18,15 @@
                 <img src="{{molecule.molecular_structure.url}}" alt="" class="card-img-top">
                 <div class="card-body">
                   <p class="card-text">
-                    Smile identifier: <b>{{molecule.smile_identifier}}</b>
+                    SMILES 
+                    <br>
+                    <b>{{molecule.smile_identifier}}</b>
 
 
                     <br>
 
 
-                      <div class="accordion" id="accordionExample">
+                      <div class="accordion" id="accordion{{forloop.counter}}">
                         <div class="accordion-item">
                           <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
@@ -34,10 +36,31 @@
                           <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
 
-                              
+                              <b class="text-center">Physicochemical</b>
 
-                              SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
+                              <div class="p-1">
+                                Molecular formula: <b>{{molecule.molecular_formula}}</b>
+                                <br>
+                                Molecular weight: <b>{{molecule.molecular_weight}} g/mol</b>
 
+                              </div>
+
+                              <br>
+
+                              <b class="text-center"> Druglikeness</b>
+
+                              <div class="p-1">
+                               Lipinski's descriptors: <b>Pass: 0 violations</b>
+                              </div>
+                                
+                              <br>
+
+                              <b class="text-center">Synthesizability</b>
+
+                              <div class="p-1">
+                                SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
+                              </div>
+                                
                             </div>
                           </div>
                         </div>
