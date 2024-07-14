@@ -30,19 +30,17 @@ def generate_molecule(generation_request):
     
     uuid = str(generation_request.uuid)
     
-    os.chdir("transfer_learning_models")
     
-    os.mkdir(uuid)
+    os.mkdir(f"transfer_learning_models/{uuid}")
         
-    os.chdir(uuid)
     
     
     df = pd.DataFrame(from_molecules, columns=['SMILES'])
     
     df = df.drop_duplicates(subset=['SMILES'])
     
-    TL_train_filename = f"{uuid}_train.smi"
-    TL_validation_filename = f"{uuid}_validation.smi"
+    TL_train_filename = f"transfer_learning_models/{uuid}/{uuid}_train.smi"
+    TL_validation_filename = f"transfer_learning_models/{uuid}/{uuid}_validation.smi"
 
     data = df.sample(frac=1)
     n_head = len(data) // 5
@@ -66,8 +64,8 @@ def generate_molecule(generation_request):
     batch_size = 100
     sample_batch_size = 2000
 
-    input_model_file = "../../stage1.chkpt"
-    output_model_file = "TL_reinvent.model"
+    input_model_file = "stage1.chkpt"
+    output_model_file = "transfer_learning_models/{uuid}/TL_reinvent.model"
     smiles_file = "{TL_train_filename}"
     validation_smiles_file = "{TL_validation_filename}"
     standardize_smiles = true
@@ -76,7 +74,7 @@ def generate_molecule(generation_request):
     internal_diversity = true
     """
     
-    TL_config_filename = f"transfer_learning.toml"
+    TL_config_filename = f"transfer_learning_models/{uuid}/transfer_learning.toml"
 
     with open(TL_config_filename, "w") as tf:
         tf.write(TL_parameters)
@@ -98,11 +96,11 @@ use_cuda = true  # run on the GPU if true, on the CPU if false
 
 [parameters]
 ## Mol2Mol: find molecules similar to the provided molecules
-model_file = "TL_reinvent.model.1.chkpt" #  trained model after transfer learning can change 30 to user based input
+model_file = "transfer_learning_models/{uuid}/TL_reinvent.model.1.chkpt" #  trained model after transfer learning can change 30 to user based input
 sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
 temperature = 1.0 # temperature in multinomial sampling
 
-output_file = 'sampling.csv'  # sampled SMILES and NLL in CSV format
+output_file = 'transfer_learning_models/{uuid}/sampling.csv'  # sampled SMILES and NLL in CSV format
 
 num_smiles = 50  # number of SMILES to be sampled, 1 per input SMILES
 unique_molecules = true  # if true remove all duplicatesd canonicalize smiles
@@ -119,7 +117,7 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
     
     
     #load csv into pandas and genrate images from smiles using rdkit
-    df = pd.read_csv(f"sampling.csv")
+    df = pd.read_csv(f"transfer_learning_models/{uuid}/sampling.csv")
     
     smiles = df['SMILES']
     from rdkit import Chem
@@ -144,8 +142,6 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
     generation_request.complete = True
     generation_request.save()
             
-    os.chdir('..')
     
-    shutil.rmtree(uuid)
-    os.chdir('..')
+    # shutil.rmtree(f"transfer_learning_models/{uuid}/")
 

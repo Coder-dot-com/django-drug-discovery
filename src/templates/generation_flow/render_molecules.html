@@ -23,10 +23,29 @@
 
                     <br>
 
-                    {% comment %} if ic50 etc... for other parameters {% endcomment %}
-                    Predicted IC50: <b>10 uM</b>
-                    <br>
-                    SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
+
+                      <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                              Molecule details
+                            </button>
+                          </h2>
+                          <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                              
+
+                              SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
+
+                            </div>
+                          </div>
+                        </div>
+       
+                      </div>
+
+
+
                   </p>
                   <div class="d-flex justify-content-end align-items-end">
                     <div class="btn-group">

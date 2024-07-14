@@ -1,0 +1,17 @@
+
+run_type = "sampling"
+use_cuda = true  # run on the GPU if true, on the CPU if false
+
+
+[parameters]
+## Mol2Mol: find molecules similar to the provided molecules
+model_file = "transfer_learning_models/4357bd8c-b9ca-4725-be91-88ead7c9ea56/TL_reinvent.model.1.chkpt" #  trained model after transfer learning can change 30 to user based input
+sample_strategy = "multinomial"  # multinomial or beamsearch (deterministic)
+temperature = 1.0 # temperature in multinomial sampling
+
+output_file = 'transfer_learning_models/4357bd8c-b9ca-4725-be91-88ead7c9ea56/sampling.csv'  # sampled SMILES and NLL in CSV format
+
+num_smiles = 50  # number of SMILES to be sampled, 1 per input SMILES
+unique_molecules = true  # if true remove all duplicatesd canonicalize smiles
+randomize_smiles = false # if true shuffle atoms in SMILES randomly
+    
