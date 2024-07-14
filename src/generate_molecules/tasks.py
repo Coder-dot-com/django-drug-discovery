@@ -140,8 +140,11 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
         #Physicochemical properties
         
         molecular_formula =  rdMolDescriptors.CalcMolFormula(m)
-        molecular_weight = rdMolDescriptors.CalcExactMolWt(m)
-                  
+        molecular_weight = rdMolDescriptors.CalcExactMolWt(m)          
+        H_bond_acceptors = rdMolDescriptors.CalcNumHBA(m)
+        H_bond_donors = rdMolDescriptors.CalcNumHBD(m)
+        heavy_atoms = rdMolDescriptors.CalcNumHeavyAtoms(m)
+        rotatable_bonds = rdMolDescriptors.CalcNumRotatableBonds(m)
         
         #synthesisability
         s = sascorer.calculateScore(m)
@@ -152,6 +155,10 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
                                          
                                          molecular_formula=molecular_formula,
                                          molecular_weight=molecular_weight,
+                                         H_bond_acceptors=H_bond_acceptors,
+                                         H_bond_donors=H_bond_donors,
+                                         heavy_atoms=heavy_atoms,
+                                         rotatable_bonds=rotatable_bonds,
                                          
                                          synthetic_accessibility_score=s
                                          )

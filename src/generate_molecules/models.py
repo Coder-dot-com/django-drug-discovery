@@ -94,11 +94,12 @@ class GeneratedMolecule(models.Model):
     #Physicochemical properties
     molecular_formula = models.CharField(max_length=1000, default="error")
     molecular_weight  = models.FloatField(default=0)
-    #upto here
     H_bond_acceptors = models.IntegerField(default=0)
     H_bond_donors = models.IntegerField(default=0)
+    heavy_atoms = models.IntegerField(default=0)
     rotatable_bonds  = models.IntegerField(default=0)
 
+    #upto here
 
     #druglikeness seperate out for each score
     
