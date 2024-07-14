@@ -88,9 +88,10 @@ def generate_molecule(generation_request):
     with open(TL_config_filename, "w") as tf:
         tf.write(TL_parameters)
         
-    
+    tl_log_path = f"transfer_learning_models/{uuid}/transfer_learning.log"
 
-    subprocess.run(["reinvent", "-l", "transfer_learning.log", TL_config_filename]) 
+
+    subprocess.run(["reinvent", "-l", tl_log_path, TL_config_filename]) 
 
 
 
@@ -120,9 +121,12 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
 
     with open(config_filename, "w") as tf:
         tf.write(sampling_parameters)
+        
+
+    sampling_log_path = f"transfer_learning_models/{uuid}/sampling.log"
     
     
-    subprocess.run(["reinvent", "-l", "sampling.log", config_filename]) 
+    subprocess.run(["reinvent", "-l", sampling_log_path, config_filename]) 
     
     
     #load csv into pandas and genrate images from smiles using rdkit
@@ -152,5 +156,5 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
     generation_request.save()
             
     
-    # shutil.rmtree(f"transfer_learning_models/{uuid}/")
+    shutil.rmtree(f"transfer_learning_models/{uuid}/")
 
