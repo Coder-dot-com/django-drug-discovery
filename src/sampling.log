@@ -1,0 +1,14 @@
+22:19:35 <INFO> Started REINVENT 4.3.5 (C) AstraZeneca 2017, 2023 on 2024-07-14
+22:19:35 <INFO> Command line: /home/u/.local/share/virtualenvs/django-drug-discovery-1-OBHKyLIl/bin/reinvent -l sampling.log transfer_learning_models/66af54ff-ccf5-482b-bf7a-83a68175b930/sampling.toml
+22:19:35 <INFO> User u on host u-ASUS-TUF-Gaming-A15-FA507NU-FA507NU
+22:19:35 <INFO> Python version 3.10.12
+22:19:35 <INFO> PyTorch version 2.2.1+cu121, git 6c8c5ad5eaf47a62fafbb4a2747198cbffbf1ff0
+22:19:35 <INFO> PyTorch compiled with CUDA version 12.1
+22:19:35 <INFO> RDKit version 2023.09.5
+22:19:35 <INFO> Platform Linux-6.5.0-41-generic-x86_64-with-glibc2.35
+22:19:35 <INFO> CUDA driver version 535.183.01
+22:19:35 <INFO> Number of PyTorch CUDA devices 1
+22:19:35 <WARN> 'use_cuda' is deprecated, use 'device' instead
+22:19:35 <INFO> Using CUDA device:0 NVIDIA GeForce RTX 4050 Laptop GPU
+22:19:35 <INFO> GPU memory: 5812 MiB free, 5905 MiB total
+22:19:35 <INFO> Starting Sampling

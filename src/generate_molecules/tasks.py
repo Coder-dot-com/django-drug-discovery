@@ -47,7 +47,16 @@ def generate_molecule(generation_request):
     n_tail = len(df) - n_head
     
     
+    print(data)
+    
+    print(n_head)
+    print(n_tail)
+    
+    
     train, validation = data.head(n_head), data.tail(n_tail)
+    
+    print('train', train)
+    print('validation', validation)
 
     train.to_csv(TL_train_filename, sep="\t", index=False, header=False)
     validation.to_csv(TL_validation_filename, sep="\t", index=False, header=False)
@@ -107,7 +116,7 @@ unique_molecules = true  # if true remove all duplicatesd canonicalize smiles
 randomize_smiles = false # if true shuffle atoms in SMILES randomly
     """
     
-    config_filename = f"{uuid}.toml"
+    config_filename = f"transfer_learning_models/{uuid}/sampling.toml"
 
     with open(config_filename, "w") as tf:
         tf.write(sampling_parameters)
