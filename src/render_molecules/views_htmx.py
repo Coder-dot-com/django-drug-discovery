@@ -47,7 +47,16 @@ def filter_molecules(request, uuid):
         
     heavy_atoms_to = request.GET['heavy_atoms_to']
     if heavy_atoms_to:
-        molecules = molecules.filter(heavy_atoms__lte=heavy_atoms_to)            
+        molecules = molecules.filter(heavy_atoms__lte=heavy_atoms_to)        
+        
+        
+    lipinskis_violations_from = request.GET['lipinskis_violations_from']
+    if lipinskis_violations_from:
+        molecules = molecules.filter(lipinskis_violations__gte=lipinskis_violations_from)   
+        
+    lipinskis_violations_to = request.GET['lipinskis_violations_to']
+    if lipinskis_violations_to:
+        molecules = molecules.filter(lipinskis_violations__lte=lipinskis_violations_to)        
         
     
     molecule_count = molecules.count()
@@ -67,6 +76,11 @@ def filter_molecules(request, uuid):
         'H_bond_donors_to': H_bond_donors_to,
         'heavy_atoms_from': heavy_atoms_from,
         'heavy_atoms_to': heavy_atoms_to,
+        
+        #Druglikeness
+        
+        'lipinskis_violations_from': lipinskis_violations_from,
+        'lipinskis_violations_to': lipinskis_violations_to,
         
         
     }

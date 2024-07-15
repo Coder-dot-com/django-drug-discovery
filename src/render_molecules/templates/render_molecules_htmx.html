@@ -4,13 +4,10 @@
   </h2>
 
 
-  {% include "molecule_filters.html" %}
-
-
-
 
   {% if generation_request.complete %}
 
+  {% include "molecule_filters.html" %}
 
 
     <div class="album px-5 py-4 bg-body-secondary">
@@ -90,7 +87,7 @@
                             <b class="text-center"> Druglikeness</b>
 
                             <div class="p-1">
-                              Lipinski's descriptors: <b > <span>{{molecule.lipinski_violations}}</span> violations </b>
+                              Lipinski's descriptors: <b > <span>{{molecule.lipinskis_violations}}</span> violations </b>
                             </div>
 
                             <br>

@@ -151,18 +151,18 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
         
         logp = MolLogP(m)
         
-        lipinski_violations = 0
+        lipinskis_violations = 0
         if not molecular_weight < 500:
-            lipinski_violations +=1
+            lipinskis_violations +=1
             
-        if H_bond_acceptors < 10:
-            lipinski_violations+=1
+        if not H_bond_acceptors < 10:
+            lipinskis_violations+=1
             
-        if H_bond_donors < 5:
-            lipinski_violations +=1
+        if not H_bond_donors < 5:
+            lipinskis_violations +=1
             
-        if logp < 5:
-            lipinski_violations +=1
+        if not logp < 5:
+            lipinskis_violations +=1
         
         
         #synthesisability
@@ -181,7 +181,7 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
                                          
                                          #lipinskis rule
                                          logp=logp,
-                                         lipinski_violations=lipinski_violations,
+                                         lipinskis_violations=lipinskis_violations,
                                          
                                          
                                          synthetic_accessibility_score=s,

@@ -2,11 +2,9 @@
 
 incorporate filters on generated molecules page e.g. synthesisability: store in request params so user can save link and filters will still be in place
 
-    -create new view to handle filters
+    -create rest of filters
 
-    handle molecular mass filter
-
-
+    -push correct url on filter
 
 
 -create molecule count
