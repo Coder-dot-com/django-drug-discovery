@@ -17,17 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views, views_htmx
-from . import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name="home"),
-    path('accounts/', include('accounts.urls')),
-    path('dashboard/', include('dashboard.urls')),
-
-    path('generate/', include('generate_molecules.urls')),
-    path('render/', include('render_molecules.urls')),
-
-    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('list_of_requests/', views.list_of_requests, name="list_of_requests"),
+    path('molecules/<uuid>', views.render_molecules, name="render_molecules"),
+   
+]

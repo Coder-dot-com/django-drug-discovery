@@ -169,6 +169,7 @@ INSTALLED_APPS = [
     'site_settings',
     
     'generate_molecules',
+    'render_molecules',
     
 
     

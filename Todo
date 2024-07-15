@@ -1,10 +1,5 @@
 
 
--link generation request to user
-
-
--create user dashboard of reports etc...
-
 
 =protect all views with login required and check request user matches the one in db for the object they're accessing
 

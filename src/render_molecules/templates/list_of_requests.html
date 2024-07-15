@@ -1,0 +1,85 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+    <div class="container my-5">
+
+        <h5>Your molecule generation requests:</h5>
+
+        {% for generation_request in generation_requests %}
+
+
+        <div class="accordion border border-1 border-dark rounded m-4 col-12 col-sm-9 mx-auto" id="accordion{{generation_request.uuid}}">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{generation_request.uuid}}" aria-expanded="false" aria-controls="collapse{{generation_request.uuid}}">
+
+                    Request created: {{generation_request.datetime_created}}
+                    Status: {{generation_request.complete}}
+ 
+                </button>
+              </h2>
+              <div id="collapse{{generation_request.uuid}}" class="accordion-collapse collapse" data-bs-parent="#accordion{{generation_request.uuid}}">
+                <div class="accordion-body">
+
+                    Request type: <b>{{generation_request.type_of_request}}</b>
+
+                    {% if generation_request.type_of_request == "from_target" %}
+
+                        <br>
+                        Organism: <b>{{generation_request.organism}}</b>
+                        {% if generation_request.disease %}
+                            <br>
+                            Disease: <b>{{generation_request.disease}}</b>
+                        {% endif %}
+
+                        {% if generation_request.target %}
+                            <br>
+                            Target: <b>{{generation_request.target}}</b>
+                        {% endif %}
+
+                        <br>
+                        Standard value cut off:
+                        <b>
+                            {{generation_request.target.standard_type}}
+                            {% if generation_request.comparator == 'less_than' %}<
+                            {% elif generation_request.comparator == "greater_than" %}>
+                            {% elif generation_request.comparator == "less_than_or_equal_to" %}<=
+                            {% elif generation_request.comparator == "greater_than_or_equal_to" %}>=
+                            {% endif %}
+                            {{generation_request.standard_value_cutoff}} ({{generation_request.target.standard_units}})
+                        </b>
+
+                    {% else %}
+                        <br>
+                        Molecules similar to those you have uploaded will be generated.
+
+
+                    {% endif %}
+
+
+                    <br>
+                    Molecules AI trained on: <b>{{generation_request.molecules_ai_trained_on}}</b>
+
+                    <div class="d-flex ">
+
+                    
+                        <a href="{% url "render_molecules" generation_request.uuid %}" class="btn btn-primary justify-content-end ms-auto">View molecules</a>
+                    </div>
+        
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        {% endfor %}
+
+
+
+
+    </div>
+{% endblock content %}

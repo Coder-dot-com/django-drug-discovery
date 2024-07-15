@@ -8,6 +8,7 @@ from rdkit.Chem import MolFromSmiles, Draw
 
 from .views_from_target import render_targets_organism
 from django.db import transaction
+from django.contrib.auth.decorators import login_required
 
 def molecules_or_target(request):
     context = {'hide_restart_button': True}
@@ -15,10 +16,12 @@ def molecules_or_target(request):
 
 
 
+@login_required
 def molecules_or_target_post(request):
     type_of_request = request.POST['type_of_request']
     
-    generation_request = GenerationRequest.objects.create(type_of_request=type_of_request)
+    
+    generation_request = GenerationRequest.objects.create(user=request.user,type_of_request=type_of_request)
     
     context = {'generation_request': generation_request}
     
@@ -115,7 +118,7 @@ def create_molecule(request, uuid):
     
     context = {'generation_request' : generation_request}
     
-    return render(request, 'generation_flow/render_molecules.html', context=context)
+    return render(request, 'render_molecules_htmx.html', context=context)
 
 
 def poll_for_request_completion(request, uuid):
@@ -124,7 +127,7 @@ def poll_for_request_completion(request, uuid):
     
     if generation_request:
         context = {'generation_request' : generation_request}        
-        return render(request, 'generation_flow/render_molecules.html', context=context)
+        return render(request, 'render_molecules_htmx.html', context=context)
 
     
     

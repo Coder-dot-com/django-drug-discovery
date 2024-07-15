@@ -1,6 +1,10 @@
 from django.db import models
 from uuid import uuid4
+from django.contrib.auth import get_user_model
+
 # Create your models here.
+
+User = get_user_model()
 
 class Organism(models.Model):
     organism = models.CharField(max_length=1000, null=True, blank=True)
@@ -48,6 +52,7 @@ class Target(models.Model):
     #predicted_effect units = models.Charfield..
 
 class GenerationRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
     
     datetime_created = models.DateTimeField(auto_now_add=True, editable=True)
     uuid = models.UUIDField(default=uuid4)
