@@ -1,13 +1,18 @@
 
-incorporate fitlers on generated molecules page e.g. synthesisability: store in request params so user can save link and filters will still be in place
+
+incorporate filters on generated molecules page e.g. synthesisability: store in request params so user can save link and filters will still be in place
 
     -create new view to handle filters
+
+    handle molecular mass filter
 
 
 
 
 -create molecule count
 
+
+- add infinite scroll with htmx
 -later for mobile filters have an accordion which hides the filters
 
 =protect all views with login required and check request user matches the one in db for the object they're accessing

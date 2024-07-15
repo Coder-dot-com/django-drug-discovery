@@ -23,4 +23,6 @@ urlpatterns = [
     path('list_of_requests/', views.list_of_requests, name="list_of_requests"),
     path('molecules/<uuid>', views.render_molecules, name="render_molecules"),
    
+   
+   path('filter_molecules/<uuid>', views_htmx.filter_molecules, name="filter_molecules"),
 ]

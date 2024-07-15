@@ -88,10 +88,12 @@ class GenerationRequest(models.Model):
 
     
     def get_molecules(self):
-        return GeneratedMolecule.objects.filter(generation_request=self)
+        return GeneratedMolecule.objects.filter(generation_request=self).order_by('datetime_created').reverse()
 
 class GeneratedMolecule(models.Model):
     generation_request = models.ForeignKey(GenerationRequest, on_delete=models.CASCADE)
+    datetime_created = models.DateTimeField(auto_now_add=True, editable=True)
+
     smile_identifier = models.CharField(max_length=1000)
     molecular_structure = models.ImageField(upload_to="molecular_structures/")
     

@@ -20,11 +20,14 @@ def list_of_requests(request):
 def render_molecules(request, uuid):
     
     generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
-    
+    molecules = generation_request.get_molecules()
+    molecule_count = molecules.count()
     
     
     context = {
         'generation_request': generation_request,
+        'molecules': molecules,
+        'molecule_count': molecule_count,
     }
     
     return render(request, 'render_molecules.html', context=context)

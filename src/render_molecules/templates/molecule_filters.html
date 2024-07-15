@@ -1,4 +1,4 @@
-<div class="p-5">
+<div class="p-1">
 
 
   <div class=" " style="
@@ -13,7 +13,7 @@
 
     <div class="">
 
-      <div class="accordion accordion-flush p-1 border border-1 border-dark rounded col-8 mx-auto" id="accordionFilters">
+      <div class="accordion accordion-flush border border-1 border-dark rounded col-12 col-sm-8 mx-auto" id="accordionFilters">
 
         <div class="accordion-item">
           <h2 class="accordion-header">
@@ -24,30 +24,59 @@
             </button>
           </h2>
           <div id="collapseFilters" class="accordion-collapse collapse" data-bs-parent="#accordionFilters">
-            <div class="accordion-body">
-              <b>
-                Physicochemical properties
-              </b>
+            <form
+              hx-get="{% url "filter_molecules" generation_request.uuid %}"
+              hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+              hx-target="#renderMolecules"
+              hx-swap="outerHTML"
+              hx-encoding='multipart/form-data'
+            >
+
+              <div class="accordion-body">
+                <b>
+                  Physicochemical properties
+                </b>
 
 
-              <div class="row">
-                <div class="">
+                <div class="row">
+                  <div class="">
 
-                  Molecular mass:
+                    Molecular mass:
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="molecular_mass_from" type="text" name="molecular_mass_from" class="form-control" placeholder="" value="{{molecular_mass_from}}">
+                    <label for="molecular_mass_from">From (>= molecular mass g/mol)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="molecular_mass_to" type="text" name="molecular_mass_to" class="form-control" placeholder="" value="{{molecular_mass_to}}" >
+                    <label for="molecular_mass_to">To (<= molecular mass g/mol)</label>
+                  </div>
+
                 </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="From (molecular mass g/mol)" >
+
+                <div class="row">
+                  <div class="">
+
+                    H-bond acceptors:
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="H_bond_acceptors_from" type="text" name="H_bond_acceptors_from" class="form-control" placeholder="" value="{{H_bond_acceptors_from}}">
+                    <label for="H_bond_acceptors_from">From (>= H-bond acceptors)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="H_bond_acceptors_to" type="text" name="H_bond_acceptors_to" class="form-control" placeholder="" value="{{H_bond_acceptors_to}}" >
+                    <label for="H_bond_acceptors_to">To (<= H-bond acceptors)</label>
+                  </div>
+
                 </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="To (molecular mass g/mol)" >
+                <div class="mt-3 text-end">
+
+                  <button type="submit" class="btn btn-primary">Filter</button>
                 </div>
+
+
               </div>
-
-
-
-
-
-            </div>
+            </formn>
           </div>
         </div>
 

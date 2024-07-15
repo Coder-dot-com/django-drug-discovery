@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from .models import GenerationRequest, GeneratedMolecule
+from .models import GenerationRequest
 
 from .tasks import generate_molecule
 import pandas as pd
@@ -125,8 +125,14 @@ def poll_for_request_completion(request, uuid):
     
     generation_request = get_object_or_404(GenerationRequest,uuid=uuid,complete=True)
     
+    molecules = generation_request.get_molecules()
+    molecule_count = molecules.count()
+    
     if generation_request:
-        context = {'generation_request' : generation_request}        
+        context = {'generation_request' : generation_request,
+                   'molecules': molecules,
+                   'molecule_count': molecule_count,
+                   }        
         return render(request, 'render_molecules_htmx.html', context=context)
 
     
