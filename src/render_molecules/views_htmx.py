@@ -49,6 +49,8 @@ def filter_molecules(request, uuid):
     if heavy_atoms_to:
         molecules = molecules.filter(heavy_atoms__lte=heavy_atoms_to)        
         
+    
+    #druglikeness
         
     lipinskis_violations_from = request.GET['lipinskis_violations_from']
     if lipinskis_violations_from:
@@ -56,7 +58,18 @@ def filter_molecules(request, uuid):
         
     lipinskis_violations_to = request.GET['lipinskis_violations_to']
     if lipinskis_violations_to:
-        molecules = molecules.filter(lipinskis_violations__lte=lipinskis_violations_to)        
+        molecules = molecules.filter(lipinskis_violations__lte=lipinskis_violations_to)    
+        
+        
+    #synthesizability
+    
+    synthetic_accessibility_score_from = request.GET['synthetic_accessibility_score_from']
+    if synthetic_accessibility_score_from:
+        molecules = molecules.filter(synthetic_accessibility_score__gte=synthetic_accessibility_score_from)   
+        
+    synthetic_accessibility_score_to = request.GET['synthetic_accessibility_score_to']
+    if synthetic_accessibility_score_to:
+        molecules = molecules.filter(synthetic_accessibility_score__lte=synthetic_accessibility_score_to)        
         
     
     molecule_count = molecules.count()
@@ -81,6 +94,10 @@ def filter_molecules(request, uuid):
         
         'lipinskis_violations_from': lipinskis_violations_from,
         'lipinskis_violations_to': lipinskis_violations_to,
+        
+        #Syhnthesizability
+        'synthetic_accessibility_score_from': synthetic_accessibility_score_from,
+        'synthetic_accessibility_score_to': synthetic_accessibility_score_to,
         
         
     }

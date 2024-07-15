@@ -139,6 +139,27 @@
 
                 </div>
 
+                <b>
+                  Synthesizability
+                </b>
+
+                <div class="row">
+                  <div class="">
+
+                    Synthetic Accessibility score (SA score):
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="synthetic_accessibility_score_from" type="text" name="synthetic_accessibility_score_from" class="form-control" placeholder="" value="{{synthetic_accessibility_score_from}}">
+                    <label for="synthetic_accessibility_score_from">From (>= Synthetic Accessibility score)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="synthetic_accessibility_score_to" type="text" name="synthetic_accessibility_score_to" class="form-control" placeholder="" value="{{synthetic_accessibility_score_to}}" >
+                    <label for="synthetic_accessibility_score_to">To (<= Synthetic Accessibility score)</label>
+                  </div>
+
+                </div>
+
+
                 <div class="mt-3 text-end">
 
                   <button type="submit" class="btn btn-primary">Filter</button>
