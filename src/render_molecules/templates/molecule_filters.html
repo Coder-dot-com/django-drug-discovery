@@ -119,6 +119,26 @@
 
                 </div>
 
+                <b>
+                  Druglikeness
+                </b>
+
+                <div class="row">
+                  <div class="">
+
+                    Lipinski's violations:
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="lipinskis_violations_from" type="text" name="lipinskis_violations_from" class="form-control" placeholder="" value="{{lipinskis_violations_from}}">
+                    <label for="lipinskis_violations_from">From (>= Lipinski's violations)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="lipinskis_violations_to" type="text" name="lipinskis_violations_to" class="form-control" placeholder="" value="{{lipinskis_violations_to}}" >
+                    <label for="lipinskis_violations_to">To (<= Lipinski's violations)</label>
+                  </div>
+
+                </div>
+
                 <div class="mt-3 text-end">
 
                   <button type="submit" class="btn btn-primary">Filter</button>

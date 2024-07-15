@@ -151,6 +151,20 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
         
         logp = MolLogP(m)
         
+        lipinski_violations = 0
+        if not molecular_weight < 500:
+            lipinski_violations +=1
+            
+        if H_bond_acceptors < 10:
+            lipinski_violations+=1
+            
+        if H_bond_donors < 5:
+            lipinski_violations +=1
+            
+        if logp < 5:
+            lipinski_violations +=1
+        
+        
         #synthesisability
         s = sascorer.calculateScore(m)
     
@@ -167,9 +181,10 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
                                          
                                          #lipinskis rule
                                          logp=logp,
+                                         lipinski_violations=lipinski_violations,
                                          
                                          
-                                         synthetic_accessibility_score=s
+                                         synthetic_accessibility_score=s,
                                          )
 
     generation_request.time_completed_creating = datetime.now()

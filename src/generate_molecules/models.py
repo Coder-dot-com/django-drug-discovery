@@ -112,7 +112,7 @@ class GeneratedMolecule(models.Model):
     #lipinski's score
     
     logp =  models.FloatField(default=0)
-    
+    lipinski_violations = models.IntegerField(default=0)
     
     
     #molecular weigt num of h donors and acceptors already calculated
@@ -124,18 +124,3 @@ class GeneratedMolecule(models.Model):
     
     
 
-    def calculate_lipinskis_violations(self):
-        violations = 0
-        if not self.molecular_weight < 500:
-            violations +=1
-            
-        if not self.H_bond_acceptors < 10:
-            violations+=1
-            
-        if not self.H_bond_donors < 5:
-            violations +=1
-            
-        if not self.logp < 5:
-            violations +=1
-        
-        return violations
