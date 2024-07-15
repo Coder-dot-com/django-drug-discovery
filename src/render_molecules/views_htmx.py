@@ -30,6 +30,25 @@ def filter_molecules(request, uuid):
     H_bond_acceptors_to = request.GET['H_bond_acceptors_to']
     if H_bond_acceptors_to:
         molecules = molecules.filter(H_bond_acceptors__lte=H_bond_acceptors_to)
+        
+        
+    H_bond_donors_from = request.GET['H_bond_donors_from']
+    if H_bond_donors_from:
+        molecules = molecules.filter(H_bond_donors__gte=H_bond_donors_from)   
+        
+    H_bond_donors_to = request.GET['H_bond_donors_to']
+    if H_bond_donors_to:
+        molecules = molecules.filter(H_bond_donors__lte=H_bond_donors_to)       
+        
+
+    heavy_atoms_from = request.GET['heavy_atoms_from']
+    if heavy_atoms_from:
+        molecules = molecules.filter(heavy_atoms__gte=heavy_atoms_from)   
+        
+    heavy_atoms_to = request.GET['heavy_atoms_to']
+    if heavy_atoms_to:
+        molecules = molecules.filter(heavy_atoms__lte=heavy_atoms_to)            
+        
     
     molecule_count = molecules.count()
 
@@ -44,10 +63,21 @@ def filter_molecules(request, uuid):
         'molecular_mass_to': molecular_mass_to,
         'H_bond_acceptors_from': H_bond_acceptors_from,
         'H_bond_acceptors_to': H_bond_acceptors_to,
-        
+        'H_bond_donors_from': H_bond_donors_from,
+        'H_bond_donors_to': H_bond_donors_to,
+        'heavy_atoms_from': heavy_atoms_from,
+        'heavy_atoms_to': heavy_atoms_to,
         
         
     }
     
-    return render(request, 'render_molecules_htmx.html', context=context)
+    
+    
+    rendered_page =  render(request, 'render_molecules_htmx.html', context=context)
+    
+    #to do push page filtered url
+    
+    rendered_page.headers['Hx-Push-URL'] = "http://127.0.0.1:8000/"
+    
+    return rendered_page
 

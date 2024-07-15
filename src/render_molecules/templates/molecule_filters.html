@@ -69,6 +69,56 @@
                   </div>
 
                 </div>
+
+                <div class="row">
+                  <div class="">
+
+                    H-bond donors:
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="H_bond_donors_from" type="text" name="H_bond_donors_from" class="form-control" placeholder="" value="{{H_bond_donors_from}}">
+                    <label for="H_bond_donors_from">From (>= H-bond donors)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="H_bond_donors_to" type="text" name="H_bond_donors_to" class="form-control" placeholder="" value="{{H_bond_donors_to}}" >
+                    <label for="H_bond_donors_to">To (<= H-bond donors)</label>
+                  </div>
+
+                </div>
+
+
+                <div class="row">
+                  <div class="">
+
+                    Heavy atoms:
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="heavy_atoms_from" type="text" name="heavy_atoms_from" class="form-control" placeholder="" value="{{heavy_atoms_from}}">
+                    <label for="heavy_atoms_from">From (>= Heavy atoms)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="heavy_atoms_to" type="text" name="heavy_atoms_to" class="form-control" placeholder="" value="{{heavy_atoms_to}}" >
+                    <label for="heavy_atoms_to">To (<= Heavy atoms)</label>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="">
+
+                    Rotatable bonds:
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="rotatable_bonds_from" type="text" name="rotatable_bonds_from" class="form-control" placeholder="" value="{{rotatable_bonds_from}}">
+                    <label for="rotatable_bonds_from">From (>=Rotatable bonds)</label>
+                  </div>
+                  <div class="col form-floating p-1">
+                    <input id="rotatable_bonds_to" type="text" name="rotatable_bonds_to" class="form-control" placeholder="" value="{{rotatable_bonds_to}}" >
+                    <label for="rotatable_bonds_to">To (<=Rotatable bonds)</label>
+                  </div>
+
+                </div>
+
                 <div class="mt-3 text-end">
 
                   <button type="submit" class="btn btn-primary">Filter</button>
