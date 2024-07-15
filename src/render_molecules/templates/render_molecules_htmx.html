@@ -1,13 +1,35 @@
-<div id="renderMolecules">
+<div class="container" id="renderMolecules">
+  <h2 class=" display-5 mt-5 pt-5 text-center">
+    Generated molecules
+  </h2>
+
+
+  {% include "molecule_filters.html" %}
+
+  <div class="text-center">
+
+    <div class="btn-group mb-3">
+
+      <a href="#" class="btn btn-primary">Add all to report(modal create new report/existing report)</a>
+      <a href="#" class="btn btn-primary">Export molecules to csv (modal)</a>
+      <a href="#" class="btn btn-primary">Generate more molecules  using same data (modal)</a>
+
+    </div>
+  </div>
+
+  <div>
+
+    Molecule count: 501
+  </div>
+
   {% if generation_request.complete %}
     <img src="{{molecule.molecular_structure.url}}" class="img-fluid"><br>
     <b>
       {{molecule.smile_identifier}}
       <br>
     </b>
-    <br>
 
-    <div class="album p-5 bg-body-tertiary">
+    <div class="album p-5 pt-0 bg-body-tertiary">
       <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -15,6 +37,7 @@
 
             <div class="col">
               <div class="card shadow-sm">
+
                 <img src="{{molecule.molecular_structure.url}}" alt="" class="card-img-top">
                 <div class="card-body">
                   <p class="card-text">
@@ -24,6 +47,14 @@
 
 
                     <br>
+
+                    <div class="d-flex justify-content-end align-items-end  p-3">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Add to report</button>
+
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Save</button>
+                      </div>
+                    </div>
 
 
                     <div class="accordion" id="accordion{{forloop.counter}}">
@@ -79,13 +110,9 @@
 
 
                   </p>
-                  <div class="d-flex justify-content-end align-items-end">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Save</button>
-                      <button type="button" class="btn btn-sm btn-outline-primary">View details</button>
-                    </div>
-                  </div>
+
                 </div>
+
               </div>
             </div>
           {% endfor %}

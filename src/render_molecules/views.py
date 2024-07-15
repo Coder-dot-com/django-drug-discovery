@@ -7,7 +7,7 @@ from generate_molecules.models import GenerationRequest
 @login_required
 def list_of_requests(request):
     
-    generation_requests = GenerationRequest.objects.filter(user=request.user)
+    generation_requests = GenerationRequest.objects.filter(user=request.user).order_by('datetime_created').reverse()
     
     context = {
         'generation_requests': generation_requests,

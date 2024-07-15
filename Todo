@@ -1,19 +1,29 @@
 
+incorporate fitlers on generated molecules page e.g. synthesisability: store in request params so user can save link and filters will still be in place
 
+    -create new view to handle filters
+
+
+
+
+-create molecule count
+
+-later for mobile filters have an accordion which hides the filters
 
 =protect all views with login required and check request user matches the one in db for the object they're accessing
 
--add in site buttons css
 
 -add tooltip to lipinskis descriptors change add a badge pass or fail based on violations( add log p to physicochemical proeprties)
 
-incorporate fitlers on generated molecules page e.g. synthesisability 
+-add in site buttons css
+
 
 -if error occurs during generation then set gen request as type error and return error
 -investigate error/prevent users from uploading only 1 compound (minimum compounds is 10 and ensure they are unique)
 
 -(later on summary) dont include duplicate molecules in molecule count
 
+-change status to instead of boolean to choices of in progress gompleted and failed
 
 
 -ability to save as reports molecules that have been filtered, view reports and download/export as csv, pdf etc..
