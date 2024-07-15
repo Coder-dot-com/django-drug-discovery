@@ -1,8 +1,7 @@
-"""
-URL configuration for drug_discovery project.
+"""mem_site URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+    https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,17 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from . import views, views_htmx
-from . import settings
-from django.conf.urls.static import static
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name="home"),
-    path('accounts/', include('accounts.urls')),
-    path('dashboard/', include('dashboard.urls')),
+    path('login/', views.login_view, name="login_user"),
+    path('logout/', views.logout_view, name="logout_user"),
+    path('register/', views.register_view, name="register_user"),
 
-    path('generate/', include('generate_molecules.urls')),
-    
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('reset_pass_request/', views.reset_pass_request, name="reset_pass_request"),
+    path('reset_password/<uidb64>/<token>/', views.reset_pass, name="reset_pass"),
+    path('confirm_email/<uidb64>/<token>/', views.confirm_email, name="confirm_email"),
+
+
+
+]

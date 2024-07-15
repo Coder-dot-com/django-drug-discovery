@@ -7,7 +7,7 @@ from django.core.files import File
 
 from rdkit.Chem import rdMolDescriptors
 from rdkit.Contrib.SA_Score import sascorer
-
+from rdkit.Chem.Crippen import MolLogP
 import subprocess
 import os
 from datetime import datetime
@@ -146,6 +146,11 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
         heavy_atoms = rdMolDescriptors.CalcNumHeavyAtoms(m)
         rotatable_bonds = rdMolDescriptors.CalcNumRotatableBonds(m)
         
+        
+        #lipinskis score
+        
+        logp = MolLogP(m)
+        
         #synthesisability
         s = sascorer.calculateScore(m)
     
@@ -159,6 +164,10 @@ randomize_smiles = false # if true shuffle atoms in SMILES randomly
                                          H_bond_donors=H_bond_donors,
                                          heavy_atoms=heavy_atoms,
                                          rotatable_bonds=rotatable_bonds,
+                                         
+                                         #lipinskis rule
+                                         logp=logp,
+                                         
                                          
                                          synthetic_accessibility_score=s
                                          )

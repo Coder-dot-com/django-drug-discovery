@@ -1,18 +1,34 @@
 
--calculate molecules values based on specific descriptors (see email)
+
+-link generation request to user
 
 
--create user functionality sign up login and register
 -create user dashboard of reports etc...
+
+
+=protect all views with login required and check request user matches the one in db for the object they're accessing
+
+-add in site buttons css
+
+-add tooltip to lipinskis descriptors change add a badge pass or fail based on violations( add log p to physicochemical proeprties)
 
 incorporate fitlers on generated molecules page e.g. synthesisability 
 
+-if error occurs during generation then set gen request as type error and return error
+-investigate error/prevent users from uploading only 1 compound (minimum compounds is 10 and ensure they are unique)
+
+-(later on summary) dont include duplicate molecules in molecule count
 
 
+
+-ability to save as reports molecules that have been filtered, view reports and download/export as csv, pdf etc..
 
 -user checks recieves notification via email once the model is ready and has been trained
 
 -add in ai credits functionality
+
+
+-(later as need to setup smtp)  add in reset pass and email validation functionality (emails functionality and app) 
 
 
 
@@ -58,8 +74,6 @@ to do later
 
 -iterate and improve site and features/functionality
 
-
--create first model based on interest/popularity
 
 -plan more functionality and features
 

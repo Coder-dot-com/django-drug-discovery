@@ -28,30 +28,34 @@
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-            <li class="px-2"><a href="{% url "home" %}">Home</a></li>
+            <li class="px-2"><a href="{% url "dashboard_home" %}">Home</a></li>
 
-            {% if user.is_authenticated %}
-              <li class="px-2"><a href="{% url "logout_user" %}">Logout</a></li>
-
-            {% else %}
-
-              <li class="px-2"><a href="{% url "register_user" %}">Register</a></li>
-              <li class="px-2"><a href="{% url "login_user" %}">Login</a></li>
-
-
-            {% endif %}
+            <li class="px-2"><a href="{% url "change_password" %}">Change password</a></li>
 
 
 
           </ul>
 
+
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{user.email}}
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url "logout_user" %}">Sign out</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
 
   </div>
 
-  
+
   <div class="container">
 
     {% for message in messages %}

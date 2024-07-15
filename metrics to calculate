@@ -1,0 +1,31 @@
+Physicochemical Properties========================
+
+Formula 
+
+Molecular weight 
+
+Num. H-bond acceptors 
+
+Num. H-bond donors 
+
+Num. heavy atoms 
+
+Num. rotatable bonds 
+
+
+Druglikeness (say number of violations) https://www.rdkit.org/docs/source/rdkit.Chem.QED.html
+
+e.g. 
+Lipinski Yes; 0 violation
+
+Ghose Yes
+
+Veber Yes
+
+Egan Yes
+
+Muegge Yes
+
+Liphophilicity
+
+http://rdkit.org/docs/source/rdkit.Chem.Crippen.html 

@@ -18,7 +18,7 @@
                 <img src="{{molecule.molecular_structure.url}}" alt="" class="card-img-top">
                 <div class="card-body">
                   <p class="card-text">
-                    SMILES 
+                    SMILES
                     <br>
                     <b>{{molecule.smile_identifier}}</b>
 
@@ -26,55 +26,55 @@
                     <br>
 
 
-                      <div class="accordion" id="accordion{{forloop.counter}}">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
-                              Molecule details
-                            </button>
-                          </h2>
-                          <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                    <div class="accordion" id="accordion{{forloop.counter}}">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                            Molecule details
+                          </button>
+                        </h2>
+                        <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
 
-                              <b class="text-center">Physicochemical</b>
+                            <b class="text-center">Physicochemical</b>
 
-                              <div class="p-1">
-                                Molecular formula: <b>{{molecule.molecular_formula}}</b>
-                                <br>
-                                Molecular weight: <b>{{molecule.molecular_weight}} g/mol</b>
-                                <br>
-                                H-bond acceptors: <b>{{molecule.H_bond_acceptors}}</b>
-                                <br>
-                                H-bond donors: <b>{{molecule.H_bond_donors}}</b>
-                                <br>
-                                Heavy atoms: <b>{{molecule.heavy_atoms}}</b>
-                                <br>
-                                Rotatable bonds: <b>{{molecule.rotatable_bonds}}</b>
-
-
-                              </div>
-
+                            <div class="p-1">
+                              Molecular formula: <b>{{molecule.molecular_formula}}</b>
                               <br>
-
-                              <b class="text-center"> Druglikeness</b>
-
-                              <div class="p-1">
-                               Lipinski's descriptors: <b>Pass: 0 violations</b>
-                              </div>
-                                
+                              Molecular weight: <b>{{molecule.molecular_weight}} g/mol</b>
                               <br>
+                              H-bond acceptors: <b>{{molecule.H_bond_acceptors}}</b>
+                              <br>
+                              H-bond donors: <b>{{molecule.H_bond_donors}}</b>
+                              <br>
+                              Heavy atoms: <b>{{molecule.heavy_atoms}}</b>
+                              <br>
+                              Rotatable bonds: <b>{{molecule.rotatable_bonds}}</b>
 
-                              <b class="text-center">Synthesizability</b>
 
-                              <div class="p-1">
-                                SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
-                              </div>
-                                
                             </div>
+
+                            <br>
+
+                            <b class="text-center"> Druglikeness</b>
+
+                            <div class="p-1">
+                              Lipinski's descriptors: <b > <span>{{molecule.calculate_lipinskis_violations}}</span> violations </b>
+                            </div>
+
+                            <br>
+
+                            <b class="text-center">Synthesizability</b>
+
+                            <div class="p-1">
+                              SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
+                            </div>
+
                           </div>
                         </div>
-       
                       </div>
+
+                    </div>
 
 
 

@@ -97,13 +97,18 @@ class GeneratedMolecule(models.Model):
     H_bond_acceptors = models.IntegerField(default=0)
     H_bond_donors = models.IntegerField(default=0)
     heavy_atoms = models.IntegerField(default=0)
-    rotatable_bonds  = models.IntegerField(default=0)
+    rotatable_bonds  = models.IntegerField(default=0)        
 
-    #upto here
 
-    #druglikeness seperate out for each score
+    ##druglikeness seperate out for each score
+    
+    #lipinski's score
+    
+    logp =  models.FloatField(default=0)
     
     
+    
+    #molecular weigt num of h donors and acceptors already calculated
     
     
     #Synthesisability
@@ -111,4 +116,19 @@ class GeneratedMolecule(models.Model):
     synthetic_accessibility_score = models.DecimalField(decimal_places=3,max_digits=100)
     
     
-    #liphophilicity
+
+    def calculate_lipinskis_violations(self):
+        violations = 0
+        if not self.molecular_weight < 500:
+            violations +=1
+            
+        if not self.H_bond_acceptors < 10:
+            violations+=1
+            
+        if not self.H_bond_donors < 5:
+            violations +=1
+            
+        if not self.logp < 5:
+            violations +=1
+        
+        return violations

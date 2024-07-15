@@ -1,7 +1,7 @@
 <div id="renderMolecules">
 
     <div id="" class="py-5">
-        
+
         <div>
             <div class="col-12 col-sm-6 mx-auto justify-content-center  p-2 border-custom rounded">
                 <h3  class="text-center my-2 mb-3">Request summary</h3>
@@ -13,33 +13,33 @@
 
                     {% if generation_request.type_of_request == "from_target" %}
 
-                    <br>
-                    Organism: <b>{{generation_request.organism}}</b>
-                    {% if generation_request.disease %}
-                    <br>
-                    Disease: <b>{{generation_request.disease}}</b>
-                    {% endif %}
+                        <br>
+                        Organism: <b>{{generation_request.organism}}</b>
+                        {% if generation_request.disease %}
+                            <br>
+                            Disease: <b>{{generation_request.disease}}</b>
+                        {% endif %}
 
-                    {% if generation_request.target %}
-                    <br>
-                    Target: <b>{{generation_request.target}}</b>
-                    {% endif %}
+                        {% if generation_request.target %}
+                            <br>
+                            Target: <b>{{generation_request.target}}</b>
+                        {% endif %}
 
-                    <br>
-                    Standard value cut off: 
-                    <b>
-                    {{generation_request.target.standard_type}} 
-                    {% if generation_request.comparator == 'less_than' %}<
-                    {% elif generation_request.comparator == "greater_than" %}>
-                    {% elif generation_request.comparator == "less_than_or_equal_to" %}<=
-                    {% elif generation_request.comparator == "greater_than_or_equal_to" %}>=
-                    {% endif %}
-                    {{generation_request.standard_value_cutoff}} ({{generation_request.target.standard_units}}) 
-                    </b>
+                        <br>
+                        Standard value cut off:
+                        <b>
+                            {{generation_request.target.standard_type}}
+                            {% if generation_request.comparator == 'less_than' %}<
+                            {% elif generation_request.comparator == "greater_than" %}>
+                            {% elif generation_request.comparator == "less_than_or_equal_to" %}<=
+                            {% elif generation_request.comparator == "greater_than_or_equal_to" %}>=
+                            {% endif %}
+                            {{generation_request.standard_value_cutoff}} ({{generation_request.target.standard_units}})
+                        </b>
 
                     {% else %}
-                    <br>
-                    Molecules similar to those you have uploaded will be generated.
+                        <br>
+                        Molecules similar to those you have uploaded will be generated.
 
 
                     {% endif %}
@@ -57,24 +57,24 @@
                     <div  class="my-3 col-12 col-sm-6 mx-auto">
                         <div class="d-grid">
 
-                                <button class="btn btn-secondary my-2"
-                                hx-get={% url "restart_creation_flow" %}
-                                hx-target="#renderMolecules"
-                                hx-swap="outerHTML"
-                                >Restart request</button>
+                            <button class="btn btn-secondary my-2"
+                                    hx-get={% url "restart_creation_flow" %}
+                                    hx-target="#renderMolecules"
+                                    hx-swap="outerHTML"
+                            >Restart request</button>
 
-                                <button class="btn btn-primary my-2" 
-                                hx-get={% url "create_molecule" generation_request.uuid %}
-                                hx-target="#renderMolecules"
-                                hx-swap="outerHTML"                                
-                                > 
-                                    Generate molecules
-                                </button>
-                                <br>
+                            <button class="btn btn-primary my-2"
+                                    hx-get={% url "create_molecule" generation_request.uuid %}
+                                    hx-target="#renderMolecules"
+                                    hx-swap="outerHTML"
+                            >
+                                Generate molecules
+                            </button>
+                            <br>
                         </div>
                         <h7 class="text-muted">Note: The lower the number of molecules the smaller the training dataset and therefore the more limited the insights that can be derived</h7>
                     </div>
-            
+
                     <br>
 
                 </div>
