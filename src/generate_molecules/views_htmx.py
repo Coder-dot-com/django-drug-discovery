@@ -11,6 +11,7 @@ from django.db import transaction
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
+@login_required
 def molecules_or_target(request):
     context = {'hide_restart_button': True}
     return render(request, 'generation_flow/molecules_or_target.html', context=context)
@@ -32,7 +33,7 @@ def molecules_or_target_post(request):
     elif type_of_request == "from_target":
         return render_targets_organism(request, generation_request_id=generation_request.id)
 
-
+@login_required
 def from_molecules_post(request, uuid):  
     
     generation_request = GenerationRequest.objects.get(uuid=uuid)
@@ -110,7 +111,7 @@ def from_molecules_post(request, uuid):
         
 
 
-
+@login_required
 def create_molecule(request, uuid):
     
     generation_request = GenerationRequest.objects.get(uuid=uuid)
@@ -122,6 +123,7 @@ def create_molecule(request, uuid):
     return render(request, 'render_molecules_htmx.html', context=context)
 
 
+@login_required
 def poll_for_request_completion(request, uuid):
     
     generation_request = get_object_or_404(GenerationRequest,uuid=uuid,complete=True)
@@ -141,6 +143,6 @@ def poll_for_request_completion(request, uuid):
         rendered_page.headers['Hx-Push-URL'] = url_to_push
         return rendered_page
     
-    
+@login_required
 def restart_creation_flow(request):
     return molecules_or_target(request)

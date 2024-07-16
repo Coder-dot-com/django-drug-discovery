@@ -1,9 +1,5 @@
 
 
-- add infinite scroll with htmx
-
-=protect all views with login required and check request user matches the one in db for the object they're accessing
-
 -go through everything and dtermine to dos
     -including correct urls being pushed    
 
@@ -16,6 +12,7 @@
 -add tooltip to lipinskis descriptors change add a badge pass or fail based on violations( add log p to physicochemical proeprties)
 
 -add in site buttons css
+-add infinite scroll with htmx
 
 
 -if error occurs during generation then set gen request as type error and return error

@@ -3,12 +3,16 @@ from .models import GenerationRequest, Target, Organism,Disease
 import pandas as pd
 from drug_discovery.settings import BASE_DIR
 from django.utils.datastructures import MultiValueDictKeyError
+from django.contrib.auth.decorators import login_required
+
 
 
 import boto3
 s3 = boto3.client('s3')
 from drug_discovery.settings import AWS_STORAGE_BUCKET_NAME
 
+
+@login_required
 def render_targets_organism(request, generation_request_id):
     generation_request =  GenerationRequest.objects.get(id=generation_request_id)
     
@@ -22,7 +26,7 @@ def render_targets_organism(request, generation_request_id):
     return render(request, "generation_flow/from_target_organism.html", context=context)
 
 
-
+@login_required
 def handle_target_organism_post(request, uuid):
     
     generation_request =  GenerationRequest.objects.get(uuid=uuid)
@@ -36,7 +40,7 @@ def handle_target_organism_post(request, uuid):
 
         
 
-
+@login_required
 def render_diseases_and_any_targets(request, uuid):
     generation_request =  GenerationRequest.objects.get(uuid=uuid)
     organism = generation_request.organism
@@ -65,7 +69,7 @@ def render_diseases_and_any_targets(request, uuid):
     return render(request, "generation_flow/select_disease_or_target.html", context=context)
     
 
-
+@login_required
 def handle_disease_target_post(request, uuid):
     generation_request =  GenerationRequest.objects.get(uuid=uuid)
 
@@ -90,7 +94,7 @@ def handle_disease_target_post(request, uuid):
     generation_request.save()
     return render_cutoffs(request, generation_request.uuid)
 
-
+@login_required
 def handle_target_post(request, uuid):
     generation_request =  GenerationRequest.objects.get(uuid=uuid)
 
@@ -102,6 +106,7 @@ def handle_target_post(request, uuid):
     return render_cutoffs(request, uuid)
 
 
+@login_required
 def render_cutoffs(request, uuid):
     generation_request =  GenerationRequest.objects.get(uuid=uuid)
     target = generation_request.target
@@ -143,6 +148,8 @@ def render_cutoffs(request, uuid):
     return render(request, "generation_flow/render_cutoffs.html", context=context)
 
 
+
+@login_required
 def molecule_count(request, uuid):
     
     generation_request =  GenerationRequest.objects.get(uuid=uuid)
