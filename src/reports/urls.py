@@ -30,7 +30,8 @@ urlpatterns = [
     path('get_modal_add_to_report_htmx/<molecule_uuid>', views_htmx.get_modal_add_to_report_htmx, name="get_modal_add_to_report_htmx"),
     path('add_molecule_to_report_htmx/<molecule_uuid>', views_htmx.add_molecule_to_report_htmx, name="add_molecule_to_report_htmx"),
 
-    
+    path('remove_molecule_from_report_htmx/<molecule_uuid>/<report_uuid>', views_htmx.remove_molecule_from_report_htmx, name="remove_molecule_from_report_htmx"),
+
 
 
 ]

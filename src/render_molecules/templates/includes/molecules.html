@@ -9,7 +9,12 @@
           <div class="d-flex justify-content-end align-items-end  p-3">
             <div class="btn-group">
               {% if report %}
-                <button type="button" class="btn btn-sm btn-outline-secondary">Remove from report</button>
+                <button 
+
+                hx-get={% url "remove_molecule_from_report_htmx" molecule.uuid report.uuid %}
+                hx-target="#renderMolecules"
+                
+                type="button" class="btn btn-sm btn-outline-secondary">Remove from report</button>
 
 
               {% else %}

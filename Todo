@@ -1,9 +1,4 @@
 Create reports functionality
-    -Add ability to add molecules to report
-    -render molecules added to report
-    -remove molecules from report
-
-    -Add buttons on list view of report 
 
     -report page similar to molecules page 
         three options
@@ -13,9 +8,13 @@ Create reports functionality
         -remove from this report option on molcules and also add to another report option
 
 
--where rendering targets and molecules use forloop.counter instead of target id to avoid sequential values
 
--add more targets and ability to search for and filter targets
+-on generated molecules list request details summary
+-(later) list reports molecule has been added to
+
+-(later) addd ability for users to upload molecules and generate/calculate data on these
+
+-(later) add more targets and ability to search for and filter targets
 -ability to suggest a new target a button
 
 -later tooltips on buttons explaining what they do on molecule page and export page
@@ -30,7 +29,7 @@ Create reports functionality
 
 -add in site buttons css
 -add infinite scroll with htmx
-
+-(later) where rendering targets and molecules use uuid instead of target id to avoid sequential values
 
 -if error occurs during generation then set gen request as type error and return error
 -investigate error/prevent users from uploading only 1 compound (minimum compounds is 10 and ensure they are unique)

@@ -48,3 +48,30 @@ def add_molecule_to_report_htmx(request, molecule_uuid):
     
     
     return HttpResponse("Added")
+
+
+@login_required
+def remove_molecule_from_report_htmx(request, molecule_uuid, report_uuid):
+    
+    molecule = GeneratedMolecule.objects.get(generation_request__user=request.user, uuid=molecule_uuid)
+    
+    report = Report.objects.get(user=request.user, uuid=report_uuid)
+    
+    report.molecules.remove(molecule)
+    report.save()
+
+    
+    molecules = report.molecules.all()
+    molecule_count = molecules.count()
+    
+    
+
+    context = {
+        'report': report,
+        'molecules': molecules,
+        'molecule_count': molecule_count,
+        
+    }
+    
+    return render(request, 'view_report_htmx.html', context=context)
+    
