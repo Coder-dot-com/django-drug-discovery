@@ -25,7 +25,7 @@
           </h2>
           <div id="collapseFilters" class="accordion-collapse collapse" data-bs-parent="#accordionFilters">
             <form
-              hx-get="{% url "filter_molecules" generation_request.uuid %}"
+              hx-get="{% url "filter_molecules_htmx" generation_request.uuid %}"
               hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
               hx-target="#renderMolecules"
               hx-swap="outerHTML"

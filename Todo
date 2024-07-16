@@ -2,20 +2,21 @@
 
 incorporate filters on generated molecules page e.g. synthesisability: store in request params so user can save link and filters will still be in place
 
-    -create rest of filters
+    -create non htmx view to load filters from url directly
 
     -push correct url on filter
 
 
--create molecule count
 
 
 - add infinite scroll with htmx
--later for mobile filters have an accordion which hides the filters
 
 =protect all views with login required and check request user matches the one in db for the object they're accessing
 
--adda bility to create reports and change their visibity
+-go through everything and dtermine to dos
+    -including correct urls being pushed    
+
+-addability to create reports and change their visibity
     -features to include in report
     -export to csv button
     -export to pdf button

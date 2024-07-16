@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from generate_molecules.models import GenerationRequest
+from django.urls import reverse
 
 # Create your views here.
 
 @login_required
-def filter_molecules(request, uuid):
-    print(request.get_full_path())
-    print(request.META['QUERY_STRING'])
+def filter_molecules_htmx(request, uuid):
     
     generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     molecules = generation_request.get_molecules()
@@ -108,7 +107,13 @@ def filter_molecules(request, uuid):
     
     #to do push page filtered url
     
-    rendered_page.headers['Hx-Push-URL'] = "http://127.0.0.1:8000/"
+    url_to_push =  request.build_absolute_uri(reverse('filter_molecules', kwargs={
+                "uuid": uuid,}
+                            ))
     
+    url_to_push = str(url_to_push) + "?" + str(request.META['QUERY_STRING'])
+
+    
+    rendered_page.headers['Hx-Push-URL'] = url_to_push
     return rendered_page
 
