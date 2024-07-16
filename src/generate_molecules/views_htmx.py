@@ -9,6 +9,7 @@ from rdkit.Chem import MolFromSmiles, Draw
 from .views_from_target import render_targets_organism
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 def molecules_or_target(request):
     context = {'hide_restart_button': True}
@@ -133,8 +134,12 @@ def poll_for_request_completion(request, uuid):
                    'molecules': molecules,
                    'molecule_count': molecule_count,
                    }        
-        return render(request, 'render_molecules_htmx.html', context=context)
-
+        rendered_page =render(request, 'render_molecules_htmx.html', context=context)
+        url_to_push =  request.build_absolute_uri(reverse('render_molecules', kwargs={
+                "uuid": uuid,}
+                            ))
+        rendered_page.headers['Hx-Push-URL'] = url_to_push
+        return rendered_page
     
     
 def restart_creation_flow(request):

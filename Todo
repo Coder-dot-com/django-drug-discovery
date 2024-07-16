@@ -1,14 +1,5 @@
 
 
-incorporate filters on generated molecules page e.g. synthesisability: store in request params so user can save link and filters will still be in place
-
-    -create non htmx view to load filters from url directly
-
-    -push correct url on filter
-
-
-
-
 - add infinite scroll with htmx
 
 =protect all views with login required and check request user matches the one in db for the object they're accessing
@@ -93,9 +84,8 @@ to do later
 
 
 
--later----------
 
--remember to push url e.g. when a report is generated so user can press back button to access it if they clcik off it (after user functionality has been added)
+
 
 
 -(later once access to more data review) calculate predicted value if user selects a target
