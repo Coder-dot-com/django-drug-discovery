@@ -1,0 +1,25 @@
+
+<div class="container" id="renderMolecules">
+  <h2 class=" display-5 mt-5 pt-5 text-center">
+    {{report.report_name}}
+  </h2>
+
+  <div class="album px-5 py-4 bg-body-secondary">
+
+    <div>
+      Molecule count: {{molecule_count}}
+    </div>
+
+
+    <div class="text-end">
+
+      <div class="btn-group mb-3">
+
+        <button href="#" class="btn btn-primary mx-2">Export molecules to csv</button>
+
+      </div>
+    </div>
+    {% include "includes/molecules.html" %}
+  </div>
+
+</div>

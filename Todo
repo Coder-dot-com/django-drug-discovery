@@ -1,7 +1,24 @@
+Create reports functionality
+    -Add ability to add molecules to report
+    -render molecules added to report
+    -remove molecules from report
+
+    -Add buttons on list view of report 
+
+    -report page similar to molecules page 
+        three options
+        Export to pdf
+        Export to csv
+        Add displayed molecules to another report
+        -remove from this report option on molcules and also add to another report option
 
 
--go through everything and dtermine to dos
-    -including correct urls being pushed    
+-where rendering targets and molecules use forloop.counter instead of target id to avoid sequential values
+
+-add more targets and ability to search for and filter targets
+-ability to suggest a new target a button
+
+-later tooltips on buttons explaining what they do on molecule page and export page
 
 -addability to create reports and change their visibity
     -features to include in report
@@ -9,7 +26,7 @@
     -export to pdf button
     -molecules in report
 
--add tooltip to lipinskis descriptors change add a badge pass or fail based on violations( add log p to physicochemical proeprties)
+-(later) add tooltip to lipinskis descriptors change add a badge pass or fail based on violations( add log p to physicochemical proeprties)
 
 -add in site buttons css
 -add infinite scroll with htmx

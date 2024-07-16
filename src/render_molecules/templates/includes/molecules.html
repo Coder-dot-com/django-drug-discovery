@@ -1,0 +1,129 @@
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for molecule in molecules %}
+
+      <div class="col">
+        <div class="card shadow-sm">
+
+          <div class="d-flex justify-content-end align-items-end  p-3">
+            <div class="btn-group">
+              {% if report %}
+                <button type="button" class="btn btn-sm btn-outline-secondary">Remove from report</button>
+
+
+              {% else %}
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        hx-target="#addMoleculeModal"
+                        hx-get={% url "get_modal_add_to_report_htmx" molecule.uuid %}
+                        hx-swap="innerHTML"
+                        hx-trigger="click"
+
+
+                >
+                  Add to report
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div  class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add molecule to report</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <div id="addMoleculeModal" class="modal-body">
+                        
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="addMoleculeToReportBtn" type="button" class="btn btn-primary">Add</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              {% endif %}
+
+            </div>
+          </div>
+          <img src="{{molecule.molecular_structure.url}}" alt="" class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              SMILES
+              <br>
+              <b>{{molecule.smile_identifier}}</b>
+
+
+              <br>
+
+
+
+              <div class="accordion" id="accordion{{forloop.counter}}">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                      Molecule details
+                    </button>
+                  </h2>
+                  <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                      <b class="text-center">Physicochemical</b>
+
+                      <div class="p-1">
+                        Molecular formula: <b>{{molecule.molecular_formula}}</b>
+                        <br>
+                        Molecular weight: <b>{{molecule.molecular_weight}} g/mol</b>
+                        <br>
+                        H-bond acceptors: <b>{{molecule.H_bond_acceptors}}</b>
+                        <br>
+                        H-bond donors: <b>{{molecule.H_bond_donors}}</b>
+                        <br>
+                        Heavy atoms: <b>{{molecule.heavy_atoms}}</b>
+                        <br>
+                        Rotatable bonds: <b>{{molecule.rotatable_bonds}}</b>
+
+
+                      </div>
+
+                      <br>
+
+                      <b class="text-center"> Druglikeness</b>
+
+                      <div class="p-1">
+                        Lipinski's descriptors: <b > <span>{{molecule.lipinskis_violations}}</span> violations </b>
+                      </div>
+
+                      <br>
+
+                      <b class="text-center">Synthesizability</b>
+
+                      <div class="p-1">
+                        SA (Synthetic Accessibility score): <b>{{molecule.synthetic_accessibility_score}}</b>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>

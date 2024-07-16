@@ -1,0 +1,98 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+  <div id="reportsPage" class="container my-5">
+
+    <h5>Your reports:</h5>
+
+        <!-- Button trigger modal -->
+    <div class="text-end">
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create a new report
+      </button>
+    </div>
+
+        <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add a new report</h1>
+            <button id="closeModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="create_report_form" class=""
+                hx-post={% url "create_report_htmx" %}
+                hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                hx-target="#reportsPage"
+                hx-swap="outerHTML"
+                hx-encoding='multipart/form-data'
+          >
+            <div class="modal-body">
+
+
+
+              <div class="form-floating mb-3">
+                <input maxlength="1000" required="" name="report_name" class="form-control" id="floatingInput" placeholder="Enter a name for the report here">
+                <label for="floatingInput">Enter a report name</label>
+              </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% for report in reports %}
+
+      <div class="my-4 border border-1 border-dark rounded my-2 col-12 col-sm-7 mx-auto">
+
+        <div class="p-3 d-flex">
+
+          <b class="display-6">
+            {{report.report_name}}
+          </b>
+          <br>
+
+
+
+          <a class="ms-auto" href="{% url "view_report" report.uuid %}">
+
+
+            <button type="button" class="btn btn-primary ms-auto ">
+              View report
+            </button>
+          </a>
+
+
+
+
+        </div>
+
+        <div class="p-3 pt-0">
+          <span class="text-muted">Created: </span> <span>{{report.datetime_created}}</span>
+        </div>
+
+
+      </div>
+    {% endfor %}
+
+
+
+
+  </div>
+
+  <script>
+    document.querySelector('#create_report_form').addEventListener('submit', (e) => {
+      document.querySelector('#closeModal').click()
+      // close modal here
+    });
+  </script>
+{% endblock content %}

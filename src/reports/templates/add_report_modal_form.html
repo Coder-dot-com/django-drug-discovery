@@ -1,0 +1,92 @@
+<form
+
+id="addMoleculeToReportForm"
+hx-post={% url "add_molecule_to_report_htmx"  molecule_uuid %}
+hx-trigger="submit, bsSend"
+hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+>
+
+
+
+    <div class="p-1 ">
+
+        <h5 class="display-6 ">Select a report to add the molecule to</h5>
+        <span class="text-muted mb-3">Note: If report is not listed molecule has already been added to report</span>
+
+        <select name="report_uuid" style="opacity:0;"id="selectReport" class="form-select d-none">
+
+            {% for report in reports %}
+
+                <option value="{{report.uuid}}" id="option_{{report.uuid}}" {% if forloop.first %} checked {% endif %}></option>
+            {% endfor %}
+
+        </select>
+
+
+        <div class="row justify-content-center  p-1 my-3" style="gap: 1.5rem !important;">
+
+            {% for report in reports %}
+                <div role="button" onclick="SelectDeselectSingle(this);" id="card_{{report.uuid}}"
+                     class=" card_choice rounded   col-12 col-sm-5 {% if forloop.first %}border-custom {% else %}border-lightgrey{% endif %} " data-option="{{report.uuid}}" style="min-width:8rem;">
+                    <div style="" class="text-center py-4">
+
+
+
+                        <h4 class="card-title">
+                            {{report.report_name}} - Created: {{report.datetime_created}}
+
+                        </h4>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+        </div>
+
+
+
+        <script>
+            function SelectDeselectSingle(e) {
+                option_id = "#option_" + e.getAttribute('data-option')
+                optionToSelect = document.querySelector(option_id)
+                select_field = document.querySelector('#selectReport')
+                {
+                    e.classList.add('border-custom')
+                    e.classList.remove('border-lightgrey')
+    //Remove borders from others not selected
+
+                    options_cards = Array.from(e.parentNode.querySelectorAll('.card_choice'))
+                    for (let i = 0; i < options_cards.length; i++) {
+                        if (options_cards[i] != e){
+                            options_cards[i].classList.remove('border-custom')
+                            options_cards[i].classList.add('border-lightgrey')
+                        }
+
+                    }
+                    optionToSelect.selected = true;
+                    select_field.value = optionToSelect.value
+                    classes = e.classList
+
+                }
+            };
+        </script>
+    </div>
+
+    <button id="addMoleculeToReportFormBtn" type="submit" class=""></button>
+
+    <script>
+        form = document.querySelector('#addMoleculeToReportForm')
+
+        button = document.querySelector('#addMoleculeToReportBtn')
+        button.addEventListener('click', function (event) {
+
+              htmx.trigger(form, "bsSend");
+
+        })
+    </script>
+
+</form>
+

@@ -170,6 +170,7 @@ INSTALLED_APPS = [
     
     'generate_molecules',
     'render_molecules',
+    'reports',
     
 
     

@@ -93,6 +93,7 @@ class GenerationRequest(models.Model):
 class GeneratedMolecule(models.Model):
     generation_request = models.ForeignKey(GenerationRequest, on_delete=models.CASCADE)
     datetime_created = models.DateTimeField(auto_now_add=True, editable=True)
+    uuid = models.UUIDField(default=uuid4)
 
     smile_identifier = models.CharField(max_length=1000)
     molecular_structure = models.ImageField(upload_to="molecular_structures/")
@@ -113,10 +114,7 @@ class GeneratedMolecule(models.Model):
     
     logp =  models.FloatField(default=0)
     lipinskis_violations = models.IntegerField(default=0)
-    
-    
-    #molecular weigt num of h donors and acceptors already calculated
-    
+        
     
     #Synthesisability
     

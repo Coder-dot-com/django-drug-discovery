@@ -5,7 +5,7 @@
         <h3  class="text-center my-2 mb-3">How would you like to generate the molecules?</h3>
 
         <form
-            hx-post={% url "molecules_or_target_post" %}
+            hx-post="{% url "molecules_or_target_post" %}"
             hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
             hx-target="#renderMolecules"
             hx-swap="outerHTML"

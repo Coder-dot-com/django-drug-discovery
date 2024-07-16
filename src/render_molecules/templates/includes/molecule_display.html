@@ -1,0 +1,21 @@
+
+
+<div class="album px-5 py-4 bg-body-secondary">
+
+  <div>
+    Molecule count: {{molecule_count}}
+  </div>
+
+
+  <div class="text-end">
+
+    <div class="btn-group mb-3">
+
+      <button  disabled class="btn btn-primary mx-2">Generate more molecules</button>
+      <button href="#" class="btn btn-primary mx-2">Add all to report</button>
+      <button href="#" class="btn btn-primary mx-2">Export molecules to csv</button>
+
+    </div>
+  </div>
+  {% include "includes/molecules.html" %}
+</div>

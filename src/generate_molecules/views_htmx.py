@@ -21,6 +21,7 @@ def molecules_or_target(request):
 @login_required
 def molecules_or_target_post(request):
     type_of_request = request.POST['type_of_request']
+    print(type_of_request)
     
     
     generation_request = GenerationRequest.objects.create(user=request.user,type_of_request=type_of_request)
@@ -31,7 +32,7 @@ def molecules_or_target_post(request):
         return render(request, "generation_flow/from_molecules.html", context=context)
     
     elif type_of_request == "from_target":
-        return render_targets_organism(request, generation_request_id=generation_request.id)
+        return render_targets_organism(request, generation_request_id=generation_request.uuid)
 
 @login_required
 def from_molecules_post(request, uuid):  
