@@ -14,7 +14,7 @@ from drug_discovery.settings import AWS_STORAGE_BUCKET_NAME
 
 @login_required
 def render_targets_organism(request, generation_request_id):
-    generation_request =  GenerationRequest.objects.get(id=generation_request_id)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=generation_request_id)
     
     organisms = Organism.objects.all()
     
@@ -29,7 +29,7 @@ def render_targets_organism(request, generation_request_id):
 @login_required
 def handle_target_organism_post(request, uuid):
     
-    generation_request =  GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     
     organism = get_object_or_404(Organism, id=(request.POST['organism']))
     
@@ -42,7 +42,7 @@ def handle_target_organism_post(request, uuid):
 
 @login_required
 def render_diseases_and_any_targets(request, uuid):
-    generation_request =  GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     organism = generation_request.organism
     
     
@@ -71,7 +71,7 @@ def render_diseases_and_any_targets(request, uuid):
 
 @login_required
 def handle_disease_target_post(request, uuid):
-    generation_request =  GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
 
     #target id in request.post
     
@@ -96,7 +96,7 @@ def handle_disease_target_post(request, uuid):
 
 @login_required
 def handle_target_post(request, uuid):
-    generation_request =  GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
 
     target = Target.objects.get(id=request.POST['target'])
     generation_request.target = target
@@ -108,7 +108,7 @@ def handle_target_post(request, uuid):
 
 @login_required
 def render_cutoffs(request, uuid):
-    generation_request =  GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     target = generation_request.target
 
     type_of_request = target.default_comparator
@@ -152,7 +152,7 @@ def render_cutoffs(request, uuid):
 @login_required
 def molecule_count(request, uuid):
     
-    generation_request =  GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     
     target = generation_request.target
     

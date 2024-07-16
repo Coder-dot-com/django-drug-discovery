@@ -36,7 +36,7 @@ def molecules_or_target_post(request):
 @login_required
 def from_molecules_post(request, uuid):  
     
-    generation_request = GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     
     
     #read first bytes of csv file
@@ -114,7 +114,7 @@ def from_molecules_post(request, uuid):
 @login_required
 def create_molecule(request, uuid):
     
-    generation_request = GenerationRequest.objects.get(uuid=uuid)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     
     transaction.on_commit(lambda: generate_molecule.delay(generation_request.id))
     
@@ -126,7 +126,7 @@ def create_molecule(request, uuid):
 @login_required
 def poll_for_request_completion(request, uuid):
     
-    generation_request = get_object_or_404(GenerationRequest,uuid=uuid,complete=True)
+    generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid, complete=True)
     
     molecules = generation_request.get_molecules()
     molecule_count = molecules.count()
