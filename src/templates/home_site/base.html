@@ -1,85 +1,56 @@
 {% load static %}
-{% include 'home_site/includes/header.html' %}
+{% include 'home_site/includes/head.html' %}
 
 <title> {% block title %}{{site.site_slogan}}{% endblock title %} | {{site.site_name}}</title>
 <meta name="description" content="{% block meta_description %}{% endblock meta_description %}"/>
 {% autoescape off %}
-  {% if site.site_meta_tags %}
-    {{site.site_meta_tags}}
-  {% endif %}
+    {% if site.site_meta_tags %}
+        {{site.site_meta_tags}}
+    {% endif %}
 {% endautoescape %}
 
 </head>
 <!--end::Head-->
 {% autoescape off %}
-  {{site.site_global_analytics}}
+    {{site.site_global_analytics}}
 {% endautoescape %}
 
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 
-  <div class="container">
 
-    <header class="p-3 mb-3 border-bottom">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-          </a>
+  {% include "home_site/includes/header.html" %}
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <div class="container">
 
-            <li class="px-2"><a href="{% url "home" %}">Home</a></li>
+        {% for message in messages %}
 
-            {% if user.is_authenticated %}
-              <li class="px-2"><a href="{% url "logout_user" %}">Logout</a></li>
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
 
             {% else %}
-
-              <li class="px-2"><a href="{% url "register_user" %}">Register</a></li>
-              <li class="px-2"><a href="{% url "login_user" %}">Login</a></li>
-
-
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             {% endif %}
 
+        {% endfor %}
 
 
-          </ul>
+    </div>
 
-        </div>
-      </div>
-    </header>
+    {% block content %}
 
-  </div>
+    {% endblock content %}
 
+    {% include 'home_site/includes/footer.html' %}
 
-  <div class="container">
-
-    {% for message in messages %}
-
-      {% if message.tags == 'error' %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>{{message}}</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-
-      {% else %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>{{message}}</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      {% endif %}
-
-    {% endfor %}
+    {% block scripts %}
+    {% endblock scripts %}
 
 
-  </div>
 
-  {% block content %}
-
-  {% endblock content %}
-
-  {% include 'home_site/includes/footer.html' %}
-
-  {% block scripts %}
-  {% endblock scripts %}
 
