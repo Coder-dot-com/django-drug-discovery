@@ -119,7 +119,7 @@
                                 </div>
 
 
-  
+
 
                             </form>
 
@@ -128,18 +128,18 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button id="addAllMoleculeToReportFormBtn" type="button" class="btn btn-primary">Add</button>
-                        
+
                             <script>
-                              form1 = document.querySelector('#addAllMoleculeToReportForm')
+                                form1 = document.querySelector('#addAllMoleculeToReportForm')
 
-                              button1 = document.querySelector('#addAllMoleculeToReportFormBtn')
-                              button1.addEventListener('click', function (event) {
+                                button1 = document.querySelector('#addAllMoleculeToReportFormBtn')
+                                button1.addEventListener('click', function (event) {
 
-                                  htmx.trigger(form1, "bsSendAddAllToReport");
+                                    htmx.trigger(form1, "bsSendAddAllToReport");
 
-                              })
-                          </script>
-                        
+                                })
+                            </script>
+
                         </div>
                     </div>
                 </div>

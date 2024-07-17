@@ -1,68 +1,247 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-	<!--begin::Head-->
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="article" />
-        {% if site.site_icon %}
-            <link rel="shortcut icon" href="{{site.site_icon.url}}" />
-        {% endif %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+<div class="fixed">
+
+    <div class="w-70 mx-auto navbarr">
+        <a href="#" aria-label="home" id="" aria-current="page"
+           class="theme-a-nav_logo-wrap w-inline-block w--current"><img loading="lazy" alt="XYZ" class="theme-a-nav_logo"
+                                                                     src=""></a>
+        <div class="menu-items">
+            <ul>
+                <li>
+
+                    <a id="heading1" href="#">
+                        De Novo Molecule Generation
+                    </a>
+                    <div onmouseover="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.add('hovered')"
+
+                    onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
+                    id="object1" class="position-absolute hide opac">
+
+                        <div class="theme-a-nav_dropdown-menu ca-de-novo border border-1 border-dark rounded shadow-lg">
+                            <div class="solutionss">
+                                <img src="" alt="">
+                                <div class="a-text_s">The XYZ Platform</div>
+                                <p class="a-paragraph_s">Reimagine how you come up with de novo molecules with our AI
+                                    platform.
+                                    Transform data into drug like compounds.
+                                </p>
+                                <div class=" ca-text_black-500">
+                                    <div class="a-text_s ca-600">Learn More</div>
+                                    <div class="ca-icon_s w-embed"
+                                         style="transform: translate3d(0em, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                                        <svg width="100%" height="100%" viewBox="0 0 16 17" fill="#000"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8 0.651611L6.59 2.06161L12.17 7.65161H0V9.65161H12.17L6.59 15.2416L8 16.6516L16 8.65161L8 0.651611Z"
+                                                fill="#000"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-a-nav_line"></div>
+                            <div class="display-flex-column-gap-1.5">
+
+                                <a href="#" class="theme-a-nav_dropdown-menu_item w-inline-block">
+                                    <img src=""
+                                         class="theme-a-nav_dropdown-menu_icon" alt="">
+                                    <div class="">
+                                        <div class="a-text_ss ca-text_white-600">How it works</div>
+                                        <div class="a-text_xs ca-text_grey-400">
+                                            Find out what goes on to generate molecules
+                                        </div>
+                                    </div>
+                                    <svg width="11px" height="11px" viewBox="0 0 8 12" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.604 11L6.604 6L1.604 1" stroke="#fff" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="theme-a-nav_dropdown-menu_item w-inline-block">
+                                    <img src=""
+                                         class="theme-a-nav_dropdown-menu_icon" alt="">
+                                    <div class="">
+                                        <div class="a-text_ss ca-text_white-600">XYZ Generate</div>
+                                        <div class="a-text_xs ca-text_grey-400">Lorem ipsum
+                                        </div>
+                                    </div>
+                                    <svg width="11px" height="11px" viewBox="0 0 8 12" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.604 11L6.604 6L1.604 1" stroke="#fff" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="theme-a-nav_dropdown-menu_item w-inline-block">
+                                    <img src=""
+                                         class="theme-a-nav_dropdown-menu_icon" alt="">
+                                    <div class="">
+                                        <div class="a-text_ss ca-text_white-600">XYZ Generate</div>
+                                        <div class="a-text_xs ca-text_grey-400">Lorem ipsum
+                                        </div>
+                                    </div>
+                                    <svg width="11px" height="11px" viewBox="0 0 8 12" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.604 11L6.604 6L1.604 1" stroke="#fff" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                
+                </li>
 
 
-        <style>
-            {% autoescape off %}
-                .site-button, button.site-button {
-                    {{site.site_button_css}}
-                }
-                .site-button:hover, button.site-button:hover {
-                    {{site.site_button_hover_css}}
+            </ul>
+        </div>
+        <a href="#"
+           class="a-button ca-tablet_none w-inline-block">
+            <div class="">Get started</div>
+        </a>
+        <a href="#" class="hamburger">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 120 120"
+                 width="120" height="120" preserveAspectRatio="xMidYMid meet"
+                 style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
+                <defs>
+                    <clipPath id="__lottie_element_13">
+                        <rect width="120" height="120" x="0" y="0"></rect>
+                    </clipPath>
+                </defs>
+                <g clip-path="url(#__lottie_element_13)">
+                    <g transform="matrix(1,0,0,1,1.5,91.5)" opacity="1" style="display: block;">
+                        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                            <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#000"
+                                  stroke-opacity="1" stroke-width="9" d=" M4.5,4.5 C4.5,4.5 112.5,4.5 112.5,4.5">
+                            </path>
+                        </g>
+                    </g>
+                    <g transform="matrix(1,0,0,1,1.5,55.5)" opacity="1" style="display: block;">
+                        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                            <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#000"
+                                  stroke-opacity="1" stroke-width="9" d=" M4.5,4.5 C4.5,4.5 112.5,4.5 112.5,4.5">
+                            </path>
+                        </g>
+                    </g>
+                    <g transform="matrix(1,0,0,1,1.5,19.5)" opacity="1" style="display: block;">
+                        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                            <path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="#000"
+                                  stroke-opacity="1" stroke-width="9" d=" M4.5,4.5 C4.5,4.5 112.5,4.5 112.5,4.5">
+                            </path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </a>
+    </div>
+</div>
+<div class="theme-a-nav_wrap w-nav">
 
-                }
-                .site-button.focus, .site-button:focus, button.site-button:focus,
-                button.site-button.focus {
-                    {% if site.site_button_focus_css %}
-                        {{site.site_button_focus_css}}
-                    {% else %}
-                        {{site.site_button_css}}
-                    {% endif %}
+    <div class="mobile-navigation" id="mobile-nav">
+        <div class="theme-a-nav_menu-wrap w-nav-menu">
+            <div class="mobile-items">
+                <ul>
+                    <li onclick="ativedropdown(this)">
+                        <a href="#">
+                            Solutions
+                            <div class="a-icon ca-s ca-tablet_block w-embed arrow-icon"
+                                 style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                                <svg width="100%" height="100%" viewBox="0 0 13 8" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.104 1.5L6.104 6.5L11.104 1.5" stroke="currentcolor" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                        </a>
+                        <div class="dropmenu" style="margin-left: 1rem !important; display: none;">
+                            <div class="activ-drop-list">
+                                <div>
+                                    <div class="solutionss">
+                                        <img src="" alt="">
+                                        <div class="a-text_s">The XYZ Platform</div>
+                                        <p class="a-paragraph_s">Reimagine how you come up with de novo molecules with our AI
+                                            platform.
+                                            Transform data into drug like compounds.
+                                        </p>
+                                        <div class=" ca-text_black-500">
+                                            <div class="a-text_s ca-600">Learn More</div>
+                                            <div class="ca-icon_s w-embed"
+                                                 style="transform: translate3d(0em, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                                                <svg width="100%" height="100%" viewBox="0 0 16 17" fill="#000"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8 0.651611L6.59 2.06161L12.17 7.65161H0V9.65161H12.17L6.59 15.2416L8 16.6516L16 8.65161L8 0.651611Z"
+                                                        fill="#000"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="theme-a-nav_line"></div>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="theme-a-nav_dropdown-menu_item w-inline-block">
+                                            <img src=""
+                                                 class="theme-a-nav_dropdown-menu_icon" alt="">
+                                            <div class="">
+                                                <div class="a-text_ss ca-text_white-600">How it works</div>
+                                                <div class="a-text_xs ca-text_grey-400"> Find out what goes on to generate molecules
+                                                </div>
+                                            </div>
+                                            <svg width="11px" height="11px" viewBox="0 0 8 12" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.604 11L6.604 6L1.604 1" stroke="#fff" stroke-width="2"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="theme-a-nav_dropdown-menu_item w-inline-block">
+                                            <img src=""
+                                                 class="theme-a-nav_dropdown-menu_icon" alt="">
+                                            <div class="">
+                                                <div class="a-text_ss ca-text_white-600">XYZ Generate</div>
+                                                <div class="a-text_xs ca-text_grey-400">Lorem ipsum
+                                                </div>
+                                            </div>
+                                            <svg width="11px" height="11px" viewBox="0 0 8 12" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.604 11L6.604 6L1.604 1" stroke="#fff" stroke-width="2"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="theme-a-nav_dropdown-menu_item w-inline-block">
+                                            <img src=""
+                                                 class="theme-a-nav_dropdown-menu_icon" alt="">
+                                            <div class="">
+                                                <div class="a-text_ss ca-text_white-600">XYZ Generate</div>
+                                                <div class="a-text_xs ca-text_grey-400">
+                                                    lorem ipsum
+                                                </div>
+                                            </div>
+                                            <svg width="11px" height="11px" viewBox="0 0 8 12" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1.604 11L6.604 6L1.604 1" stroke="#fff" stroke-width="2"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
 
-                }
-                .site-secondary-button, button.site-secondary-button {
-                    {{site.site_secondary_button_css}}
-                }
-                .site-secondary-button:hover, button.site-secondary-button:hover {
-                    {{site.site_secondary_button_hover_css}}
-
-                }
-                .site-secondary-button.focus, .site-secondary-button:focus, button.site-secondary-button:focus,
-                button.site-secondary-button {
-                    {% if site.site_secondary_button_focus_css %}
-                        {{site.site_secondary_button_focus_css}}
-                    {% else %}
-                        {{site.site_secondary_button_css}}
-                    {% endif %}
-
-                }
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
 
+                </ul>
+                <a href="#"
+                   class="a-button a-button2 ca-tablet_none w-inline-block">
+                    <div class="">Get started</div>
+                </a>
+            </div>
+        </div>
+    </div>
 
-                .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-                    {{site.site_headings_css}}
-                }
-            {% endautoescape %}
-
-
-            .border-lightgrey {
-                border: var(--bs-border-width) solid lightgrey;
-            }
-            .border-custom {
-                border: var(--bs-border-width) solid #86b7fe !important;
-                box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
-            }
-        </style>
+</div>
