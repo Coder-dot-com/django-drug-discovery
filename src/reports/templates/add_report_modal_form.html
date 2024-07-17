@@ -1,9 +1,9 @@
 <form
 
-id="addMoleculeToReportForm"
-hx-post={% url "add_molecule_to_report_htmx"  molecule_uuid %}
-hx-trigger="submit, bsSend"
-hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    id="addMoleculeToReportForm"
+    hx-post={% url "add_molecule_to_report_htmx"  molecule_uuid %}
+    hx-trigger="submit, bsSend"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
 
 >
 
@@ -83,7 +83,7 @@ hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
         button = document.querySelector('#addMoleculeToReportBtn')
         button.addEventListener('click', function (event) {
 
-              htmx.trigger(form, "bsSend");
+            htmx.trigger(form, "bsSend");
 
         })
     </script>

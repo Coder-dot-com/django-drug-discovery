@@ -1,5 +1,5 @@
 {% load static %}
-{% include 'home_site/includes/header.html' %}
+{% include 'dashboard/includes/header.html' %}
 
 <title> {% block title %}{{site.site_slogan}}{% endblock title %} | {{site.site_name}}</title>
 <meta name="description" content="{% block meta_description %}{% endblock meta_description %}"/>
@@ -84,7 +84,7 @@
 
   {% endblock content %}
 
-  {% include 'home_site/includes/footer.html' %}
+  {% include 'dashboard/includes/footer.html' %}
 
   {% block scripts %}
   {% endblock scripts %}

@@ -2,20 +2,157 @@
 
 <div class="album px-5 py-4 bg-body-secondary">
 
-  <div>
-    Molecule count: {{molecule_count}}
-  </div>
-
-
-  <div class="text-end">
-
-    <div class="btn-group mb-3">
-
-      <button  disabled class="btn btn-primary mx-2">Generate more molecules</button>
-      <button href="#" class="btn btn-primary mx-2">Add all to report</button>
-      <button href="#" class="btn btn-primary mx-2">Export molecules to csv</button>
-
+    <div>
+        Molecule count: {{molecule_count}}
     </div>
-  </div>
-  {% include "includes/molecules.html" %}
+
+
+    <div class="text-end">
+
+        <div class="btn-group mb-3">
+
+            <button  disabled class="btn btn-primary mx-2">Generate more molecules</button>
+
+            <a
+                data-bs-title="Adds all molecule to chosen report not including filtered molecules"
+                data-bs-toggle="tooltip"
+                data-bs-trigger="hover"
+            >
+
+                <button  class="btn btn-primary mx-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addAllToReportModal"
+
+                >
+                    Add all to report
+                </button>
+            </a>
+
+
+                <!-- Modal -->
+            <div class="modal fade" id="addAllToReportModal" tabindex="-1" aria-labelledby="addAllToReportModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div  class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="addAllToReportModalLabel">Add all molecules displayed to report</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div id="addAllMoleculeModal" class="modal-body">
+                            <form
+
+                                id="addAllMoleculeToReportForm"
+                                hx-post='{% url "add_all_molecules_to_report_htmx"  %}'
+                                hx-trigger=" bsSendAddAllToReport"
+                                hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+
+                            >
+
+
+                                <div class="p-1 ">
+
+                                    <h5 class="display-6 text-center ">Select a report to add the molecules to</h5>
+                                    <span class="text-muted text-center mb-3">Note: If report is not listed molecule has already been added to report</span>
+                                    <input name="molecules" type="hidden"
+                                           value="{% for molecule in molecules %}{{molecule.uuid}}{% if not forloop.last %},{% endif %}{% endfor %}"
+
+                                    ></input>
+                                    <select name="report_uuid" style="opacity:0;"id="selectReport" class="form-select d-none">
+
+                                        {% for report in reports %}
+
+                                            <option value="{{report.uuid}}" id="option_{{report.uuid}}" {% if forloop.first %} checked {% endif %}></option>
+                                        {% endfor %}
+
+                                    </select>
+
+
+                                    <div class="row justify-content-center  p-1 my-3" style="gap: 1.5rem !important;">
+
+                                        {% for report in reports %}
+                                            <div role="button" onclick="SelectDeselectSingleAll(this);" id="card_{{report.uuid}}"
+                                                 class=" card_choice rounded   col-12 col-sm-5 {% if forloop.first %}border-custom {% else %}border-lightgrey{% endif %} " data-option="{{report.uuid}}" style="min-width:8rem;">
+                                                <div style="" class="text-center py-4">
+
+
+
+                                                    <h4 class="card-title">
+                                                        {{report.report_name}} - Created: {{report.datetime_created}}
+
+                                                    </h4>
+
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+
+
+                                    </div>
+
+
+
+                                    <script>
+                                        function SelectDeselectSingleAll(e) {
+                                            option_id = "#option_" + e.getAttribute('data-option')
+                                            optionToSelect = document.querySelector(option_id)
+                                            select_field = document.querySelector('#selectReport')
+                                            {
+                                                e.classList.add('border-custom')
+                                                e.classList.remove('border-lightgrey')
+              //Remove borders from others not selected
+
+                                                options_cards = Array.from(e.parentNode.querySelectorAll('.card_choice'))
+                                                for (let i = 0; i < options_cards.length; i++) {
+                                                    if (options_cards[i] != e){
+                                                        options_cards[i].classList.remove('border-custom')
+                                                        options_cards[i].classList.add('border-lightgrey')
+                                                    }
+
+                                                }
+                                                optionToSelect.selected = true;
+                                                select_field.value = optionToSelect.value
+                                                classes = e.classList
+
+                                            }
+                                        };
+                                    </script>
+                                </div>
+
+
+  
+
+                            </form>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="addAllMoleculeToReportFormBtn" type="button" class="btn btn-primary">Add</button>
+                        
+                            <script>
+                              form1 = document.querySelector('#addAllMoleculeToReportForm')
+
+                              button1 = document.querySelector('#addAllMoleculeToReportFormBtn')
+                              button1.addEventListener('click', function (event) {
+
+                                  htmx.trigger(form1, "bsSendAddAllToReport");
+
+                              })
+                          </script>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <button href="#" class="btn btn-primary mx-2">Export molecules to csv</button>
+
+        </div>
+    </div>
+    {% include "includes/molecules.html" %}
 </div>
+
+
+

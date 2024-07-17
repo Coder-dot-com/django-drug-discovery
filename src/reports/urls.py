@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('remove_molecule_from_report_htmx/<molecule_uuid>/<report_uuid>', views_htmx.remove_molecule_from_report_htmx, name="remove_molecule_from_report_htmx"),
 
+    path('add_all_molecules_to_report_htmx/', views_htmx.add_all_molecules_to_report_htmx, name="add_all_molecules_to_report_htmx"),
 
 
 ]

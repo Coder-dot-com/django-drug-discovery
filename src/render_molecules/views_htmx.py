@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from generate_molecules.models import GenerationRequest
 from django.urls import reverse
+from reports.models import Report
 
 # Create your views here.
 
@@ -10,6 +11,7 @@ def filter_molecules_htmx(request, uuid):
     
     generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     molecules = generation_request.get_molecules()
+    reports = Report.objects.filter(user=request.user).order_by('datetime_created').reverse()
 
     #physicochemical filters
     molecular_mass_from = request.GET['molecular_mass_from']
@@ -78,6 +80,7 @@ def filter_molecules_htmx(request, uuid):
         'generation_request': generation_request,
         'molecules': molecules,
         'molecule_count': molecule_count,
+        'reports': reports,
         
         #physicochemical properties
         'molecular_mass_from': molecular_mass_from,

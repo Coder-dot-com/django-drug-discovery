@@ -75,3 +75,28 @@ def remove_molecule_from_report_htmx(request, molecule_uuid, report_uuid):
     
     return render(request, 'view_report_htmx.html', context=context)
     
+
+
+@login_required
+def add_all_molecules_to_report_htmx(request):
+    
+    
+    molecule_uuids = request.POST['molecules'].split(',')
+    report_uuid = request.POST['report_uuid']
+    report = Report.objects.get(user=request.user, uuid=report_uuid)
+    
+    molecules_added = len(molecule_uuids)
+    
+    for molecule_uuid in molecule_uuids:
+        molecule = GeneratedMolecule.objects.get(generation_request__user=request.user, uuid=molecule_uuid)    
+        report.molecules.add(molecule)
+    report.save()
+    #check molecule belongs to user via request
+    #check report belongs to user
+    
+    
+    return HttpResponse(f"""
+                        <div class='display-6 text-center'>Added {molecules_added} molecules to your report</div>
+                        <div class='text-muted text-center'> Note: Molecules added already were not added again but are included in the above count</div>
+                    
+                        """)

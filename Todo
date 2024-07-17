@@ -1,13 +1,20 @@
-Create reports functionality
 
-    -report page similar to molecules page 
-        three options
-        Export to pdf
-        Export to csv
-        Add displayed molecules to another report
-        -remove from this report option on molcules and also add to another report option
+-Add all to report (filtered)
+-Export to csv
+
+-add create new report button to add to report and also add all to report
 
 
+- go through all to dos and organise
+
+-add feedback option
+
+-update header and work on design
+    -site buttons
+
+-work on landing page
+
+-(later)Export to pdf
 
 -on generated molecules list request details summary
 -(later) list reports molecule has been added to
@@ -26,6 +33,8 @@ Create reports functionality
     -molecules in report
 
 -(later) add tooltip to lipinskis descriptors change add a badge pass or fail based on violations( add log p to physicochemical proeprties)
+
+-(later) add filters to reports
 
 -add in site buttons css
 -add infinite scroll with htmx
@@ -65,7 +74,8 @@ Create reports functionality
 
 
 
--(later need better data)calculate/predict toxicity/train models for this
+-(later need better data)calculate/predict toxicity/train models for this 
+    -add as a model for further reinforcement learning on the model before sampling compounds
 
 
 -Later summary as a side panel with ability to click previous questions and edit on target selection flow
