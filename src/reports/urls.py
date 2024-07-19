@@ -23,7 +23,8 @@ urlpatterns = [
     
     path('view_report/<uuid>', views.view_report, name="view_report"),
 
-    
+    path('export_report_molecules_csv/<uuid>', views.export_report_molecules_csv, name="export_report_molecules_csv"),
+
     path('create_report_htmx/', views_htmx.create_report_htmx, name="create_report_htmx"),
     
     
@@ -34,5 +35,6 @@ urlpatterns = [
 
     path('add_all_molecules_to_report_htmx/', views_htmx.add_all_molecules_to_report_htmx, name="add_all_molecules_to_report_htmx"),
 
+    
 
 ]

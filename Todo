@@ -1,6 +1,3 @@
--add relevant links to headers
-    -requests
-    -reports
 
 -add site button 
 
@@ -12,6 +9,7 @@
 -add create new report button to add to report and also add all to report
 
 
+-(later) refresh add molecules to report on clcik of add molecules button so user doesn't have to refresh to add again
 - go through all to dos and organise
 
 -add feedback option
