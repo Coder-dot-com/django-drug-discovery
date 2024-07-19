@@ -1,7 +1,7 @@
-<div class="fixed">
+<div class="">
 
     <div class="w-70 mx-auto navbarr">
-        <a href="#" aria-label="home" id="" aria-current="page"
+        <a href="/" aria-label="home" id="" aria-current="page"
            class="theme-a-nav_logo-wrap w-inline-block w--current"><img loading="lazy" alt="XYZ" class="theme-a-nav_logo"
                                                                      src=""></a>
         <div class="menu-items">
@@ -13,8 +13,8 @@
                     </a>
                     <div onmouseover="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.add('hovered')"
 
-                    onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
-                    id="object1" class="position-absolute hide opac">
+                        onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
+                        id="object1" class="position-absolute hide opac">
 
                         <div class="theme-a-nav_dropdown-menu ca-de-novo border border-1 border-dark rounded shadow-lg">
                             <div class="solutionss">
@@ -92,12 +92,44 @@
                 
                 </li>
 
+                <li>
 
+                    <a id="heading2" href="{% url "list_of_requests" %}">
+                       Requests
+                    </a>
+                    <div onmouseover="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.add('hovered')"
+
+                        onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
+                        id="object2" class="position-absolute hide opac">
+
+                    
+                    </div>
+                
+
+                
+                </li>
+                <li>
+
+                    <a id="heading3" href="{% url "list_of_reports" %}">
+                       Reports
+                    </a>
+                    <div onmouseover="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.add('hovered')"
+
+                        onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
+                        id="object3" class="position-absolute hide opac">
+
+                    
+                    </div>
+                
+
+                
+                </li>
+            
             </ul>
         </div>
-        <a href="#"
+        <a href="{% url "logout_user" %}"
            class="a-button ca-tablet_none w-inline-block">
-            <div class="">Get started</div>
+            <div class="">Logout</div>
         </a>
         <a href="#" class="hamburger">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 120 120"
@@ -236,9 +268,9 @@
 
 
                 </ul>
-                <a href="#"
+                <a href="{% url "logout_user" %}"
                    class="a-button a-button2 ca-tablet_none w-inline-block">
-                    <div class="">Get started</div>
+                    <div class="">Logout</div>
                 </a>
             </div>
         </div>

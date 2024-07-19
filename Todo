@@ -1,6 +1,13 @@
+-add relevant links to headers
+    -requests
+    -reports
 
--Add all to report (filtered)
--Export to csv
+-add site button 
+
+-determine site button css
+
+
+-Export to csv functionality
 
 -add create new report button to add to report and also add all to report
 

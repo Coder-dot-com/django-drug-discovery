@@ -1,9 +1,11 @@
-<div class="fixed">
+<div class="">
 
     <div class="w-70 mx-auto navbarr">
-        <a href="#" aria-label="home" id="" aria-current="page"
-           class="theme-a-nav_logo-wrap w-inline-block w--current"><img loading="lazy" alt="XYZ" class="theme-a-nav_logo"
-                                                                     src=""></a>
+        <a href="/" aria-label="home" id="" aria-current="page"
+           class="theme-a-nav_logo-wrap w-inline-block w--current">
+           <img loading="lazy" alt="XYZ" class="theme-a-nav_logo"
+                                                                     src="">
+            </a>
         <div class="menu-items">
             <ul>
                 <li>
@@ -95,10 +97,19 @@
 
             </ul>
         </div>
-        <a href="#"
-           class="a-button ca-tablet_none w-inline-block">
-            <div class="">Get started</div>
+
+        {% if user.is_authenticated %}
+            <a href="{% url "dashboard_home" %}"
+            class="a-button ca-tablet_none w-inline-block">
+                <div class="">My dashboard</div>
+            </a>
+        {% else %}
+        <a href="{% url "login_user" %}"
+        class="a-button ca-tablet_none w-inline-block">
+            <div class="">Login</div>
         </a>
+
+        {% endif %}
         <a href="#" class="hamburger">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 120 120"
                  width="120" height="120" preserveAspectRatio="xMidYMid meet"
@@ -143,7 +154,7 @@
                 <ul>
                     <li onclick="ativedropdown(this)">
                         <a href="#">
-                            Solutions
+                            De Novo Molecule Generation
                             <div class="a-icon ca-s ca-tablet_block w-embed arrow-icon"
                                  style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
                                 <svg width="100%" height="100%" viewBox="0 0 13 8" fill="none"
@@ -236,10 +247,20 @@
 
 
                 </ul>
-                <a href="#"
+                {% if user.is_authenticated %}
+
+                <a href="{% url "dashboard_home" %}"
                    class="a-button a-button2 ca-tablet_none w-inline-block">
-                    <div class="">Get started</div>
+                    <div class="">My dashboard</div>
                 </a>
+
+                {% else %}
+                <a href="{% url "login_user" %}"
+                class="a-button a-button2 ca-tablet_none w-inline-block">
+                 <div class="">Login</div>
+                </a>
+                {% endif %}
+
             </div>
         </div>
     </div>
