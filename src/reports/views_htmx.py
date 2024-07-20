@@ -15,8 +15,9 @@ def create_report_htmx(request):
                                    
                                    )
     
+    context = {'report': report}
     
-    return  render(request, 'view_report_htmx.html')
+    return  render(request, 'view_report_htmx.html', context=context)
 
 
 @login_required

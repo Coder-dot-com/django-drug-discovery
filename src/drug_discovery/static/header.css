@@ -139,6 +139,7 @@ white-space: wrap !important;
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 2;
 }
 
 .theme-a-nav_dropdown-menu {
@@ -405,6 +406,7 @@ white-space: wrap !important;
 .mobile-navigation.open {
     display: block;
     opacity: 1;
+    z-index: 2;
 }
  /* dropdown menu */
  /* .dropmenu{

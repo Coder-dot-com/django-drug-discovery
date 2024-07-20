@@ -11,7 +11,7 @@
 
         <div class="btn-group mb-3">
 
-            <button  disabled class="btn btn-primary mx-2">Generate more molecules</button>
+            <button  disabled class="btn text-white site-button mx-2 ">Generate more molecules</button>
 
             <a
                 data-bs-title="Adds all molecule to chosen report not including filtered molecules"
@@ -19,7 +19,7 @@
                 data-bs-trigger="hover"
             >
 
-                <button  class="btn btn-primary mx-2"
+                <button  class="btn site-button mx-2"
                         data-bs-toggle="modal"
                         data-bs-target="#addAllToReportModal"
 
@@ -52,7 +52,6 @@
                                 <div class="p-1 ">
 
                                     <h5 class="display-6 text-center ">Select a report to add the molecules to</h5>
-                                    <span class="text-muted text-center mb-3">Note: If report is not listed molecule has already been added to report</span>
                                     <input name="molecules" type="hidden"
                                            value="{% for molecule in molecules %}{{molecule.uuid}}{% if not forloop.last %},{% endif %}{% endfor %}"
 
@@ -127,7 +126,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button id="addAllMoleculeToReportFormBtn" type="button" class="btn btn-primary">Add</button>
+                            <button id="addAllMoleculeToReportFormBtn" type="button" class="btn site-button">Add</button>
 
                             <script>
                                 form1 = document.querySelector('#addAllMoleculeToReportForm')
@@ -147,7 +146,7 @@
 
 
 
-            {% comment %} <button href="#" class="btn btn-primary mx-2">Export molecules to csv</button> {% endcomment %}
+            {% comment %} <button href="#" class="btn site-button mx-2">Export molecules to csv</button> {% endcomment %}
 
         </div>
     </div>
