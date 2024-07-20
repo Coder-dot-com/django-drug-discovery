@@ -1,12 +1,20 @@
 
--add site button 
 
--determine site button css
+-go through everything and test
+
+-fix t & cs and privacy policy
+-fix anything that needs fixing
+
+-get to a deployable state
+
+-deploy
+-test
+-find some example receptors and marketing on monday
 
 
--Export to csv functionality
+-(later) update requests to have status e.g. created creating completed instead of true false and only display in requests if the user actually completes the process
 
--add create new report button to add to report and also add all to report
+-(later after prototyping)add create new report button to add to report and also add all to report
 
 
 -(later) refresh add molecules to report on clcik of add molecules button so user doesn't have to refresh to add again

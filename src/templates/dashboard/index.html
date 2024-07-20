@@ -10,22 +10,24 @@
 
             <div class="col-12">
 
-                <h1 class="display-5 fw-bold lh-1 mb-3 text-center">Generate de novo drug like molecules <span class="text-primary text-underline">with AI</span></h1>
+                <div id="renderMolecules">
+
+
+                <h1 class="display-5 fw-bold lh-1 mb-3 text-center">Generate de novo drug like molecules with AI</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-center">
                     <button class="btn site-button"
                             hx-get="{% url "molecules_or_target" %}"
                             hx-target="#renderMolecules"
                             hx-swap="outerHTML">
-                        Get started
+                        Start creating
                     </button>
                 </div>
-            </div>
 
-            <div id="renderMolecules">
-
+                </div>
 
             </div>
 
+  
         </div>
 
 

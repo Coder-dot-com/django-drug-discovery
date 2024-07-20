@@ -91,7 +91,22 @@
 
                 
                 </li> {% endcomment %}
+                <li>
 
+                    <a id="heading4" href="{% url "dashboard_home" %}">
+                       Create molecules
+                    </a>
+                    <div onmouseover="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.add('hovered')"
+
+                        onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
+                        id="object3" class="position-absolute hide opac">
+
+                    
+                    </div>
+                
+
+                
+                </li>    
                 <li>
 
                     <a id="heading2" href="{% url "list_of_requests" %}">
@@ -124,7 +139,7 @@
 
                 
                 </li>
-            
+        
             </ul>
         </div>
         <a href="{% url "logout_user" %}"
@@ -173,7 +188,7 @@
         <div class="theme-a-nav_menu-wrap w-nav-menu">
             <div class="mobile-items">
                 <ul>
-                    <li onclick="ativedropdown(this)">
+                    {% comment %} <li onclick="ativedropdown(this)">
                         <a href="#">
                             De Novo Molecule Generation
                             <div class="a-icon ca-s ca-tablet_block w-embed arrow-icon"
@@ -264,8 +279,13 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> {% endcomment %}
 
+                    <li><a href="{% url "dashboard_home" %}">Create molecules</a></li>
+
+
+                    <li><a href="{% url "list_of_requests" %}">Requests</a></li>
+                    <li><a href="{% url "list_of_reports" %}">Reports</a></li>
 
                 </ul>
                 <a href="{% url "logout_user" %}"
