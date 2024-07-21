@@ -19,7 +19,8 @@ from . import views, views_htmx
 urlpatterns = [
     path('', views.dashboard_home, name="dashboard_home",),
 
-    
+     path('add_feedback_htmx/', views_htmx.add_feedback_htmx, name="add_feedback_htmx",),
+   
     
     path('change_password/', views.change_password, name="change_password",),
 

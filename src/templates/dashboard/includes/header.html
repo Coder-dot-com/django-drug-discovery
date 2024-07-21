@@ -140,6 +140,28 @@
                 
                 </li>
         
+
+                <li>
+
+                    <a data-bs-toggle="modal" data-bs-target="#feedbackModal" id="heading3">
+                       Feedback
+                    </a>
+
+                    <div onmouseover="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.add('hovered')"
+
+                        onmouseout="const mouseoverEvent = new Event('mouseover');this.previousElementSibling.classList.remove('hovered')"
+                        id="object3" class="position-absolute hide opac">
+                    
+                    </div>
+                
+                    {% include "dashboard/includes/user_feedback_modal.html" %}
+
+
+                
+                </li>
+        
+
+
             </ul>
         </div>
         <a href="{% url "logout_user" %}"
