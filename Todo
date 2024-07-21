@@ -1,13 +1,21 @@
+-fix t & cs and privacy policy
 
-
+-add feedback
+-add suggest a receptor
 -go through everything and test
 
--fix t & cs and privacy policy
+
+-
+
 -fix anything that needs fixing
 
 -get to a deployable state
 
--deploy
+-choose domain
+-create logo
+
+-clear out s3
+-deploy to non gpu instance and add receptors with same db instance for gpu instance
 -test
 -find some example receptors and marketing on monday
 
