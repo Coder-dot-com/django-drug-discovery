@@ -23,17 +23,17 @@
 
 
     >
-    <div id="spinner" class="spinner-border mx-3" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-    <h4 class="text-center">
-      {% if not generation_request.complete %}
-        Generating molecules please wait...
+      <div id="spinner" class="spinner-border mx-3" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <h4 class="text-center">
+        {% if not generation_request.complete %}
+          Generating molecules please wait...
         {% else %}
-        Loading molecules please wait....
+          Loading molecules please wait....
         {% endif %}
-    </h4>
-        <br>
+      </h4>
+      <br>
 
 
     </div>

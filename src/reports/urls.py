@@ -26,7 +26,8 @@ urlpatterns = [
     path('export_report_molecules_csv/<uuid>', views.export_report_molecules_csv, name="export_report_molecules_csv"),
 
     path('create_report_htmx/', views_htmx.create_report_htmx, name="create_report_htmx"),
-    
+    path('create_report_molecules_display_htmx/', views_htmx.create_report_molecules_display_htmx, name="create_report_molecules_display_htmx"),
+
     
     path('get_modal_add_to_report_htmx/<molecule_uuid>', views_htmx.get_modal_add_to_report_htmx, name="get_modal_add_to_report_htmx"),
     path('add_molecule_to_report_htmx/<molecule_uuid>', views_htmx.add_molecule_to_report_htmx, name="add_molecule_to_report_htmx"),

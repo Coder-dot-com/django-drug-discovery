@@ -3,9 +3,9 @@
     <div class="w-70 mx-auto navbarr">
         <a href="/" aria-label="home" id="" aria-current="page"
            class="theme-a-nav_logo-wrap w-inline-block w--current">
-           <img loading="lazy" alt="XYZ" class="theme-a-nav_logo"
-                                                                     src="">
-            </a>
+            <img loading="lazy" alt="XYZ" class="theme-a-nav_logo"
+                 src="">
+        </a>
         <div class="menu-items">
             <ul>
                 {% comment %} <li>
@@ -100,14 +100,14 @@
 
         {% if user.is_authenticated %}
             <a href="{% url "dashboard_home" %}"
-            class="a-button ca-tablet_none w-inline-block">
+               class="a-button ca-tablet_none w-inline-block">
                 <div class="">My dashboard</div>
             </a>
         {% else %}
-        <a href="{% url "login_user" %}"
-        class="a-button ca-tablet_none w-inline-block">
-            <div class="">Login</div>
-        </a>
+            <a href="{% url "login_user" %}"
+               class="a-button ca-tablet_none w-inline-block">
+                <div class="">Login</div>
+            </a>
 
         {% endif %}
         <a href="#" class="hamburger">
@@ -249,16 +249,16 @@
                 </ul>
                 {% if user.is_authenticated %}
 
-                <a href="{% url "dashboard_home" %}"
-                   class="a-button a-button2 ca-tablet_none w-inline-block">
-                    <div class="">My dashboard</div>
-                </a>
+                    <a href="{% url "dashboard_home" %}"
+                       class="a-button a-button2 ca-tablet_none w-inline-block">
+                        <div class="">My dashboard</div>
+                    </a>
 
                 {% else %}
-                <a href="{% url "login_user" %}"
-                class="a-button a-button2 ca-tablet_none w-inline-block">
-                 <div class="">Login</div>
-                </a>
+                    <a href="{% url "login_user" %}"
+                       class="a-button a-button2 ca-tablet_none w-inline-block">
+                        <div class="">Login</div>
+                    </a>
                 {% endif %}
 
             </div>

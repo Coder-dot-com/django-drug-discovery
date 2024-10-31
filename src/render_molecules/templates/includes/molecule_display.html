@@ -19,9 +19,13 @@
                 data-bs-trigger="hover"
             >
 
-                <button  class="btn site-button mx-2"
+                <button id="addAllToReportModalBtn" class="btn site-button mx-2"
                         data-bs-toggle="modal"
                         data-bs-target="#addAllToReportModal"
+                        hx-trigger="click"
+                        hx-get="{% url "load_reports_list_htmx" %}"
+                        hx-swap="innerHTML"
+                        hx-target="#reports_list"
 
                 >
                     Add all to report
@@ -56,78 +60,12 @@
                                            value="{% for molecule in molecules %}{{molecule.uuid}}{% if not forloop.last %},{% endif %}{% endfor %}"
 
                                     ></input>
-                                    <select name="report_uuid" style="opacity:0;"id="selectReport" class="form-select d-none">
 
-                                        {% for report in reports %}
+                                    <div id="reports_list">
 
-                                            <option value="{{report.uuid}}" id="option_{{report.uuid}}" {% if forloop.first %} checked {% endif %}></option>
-                                        {% endfor %}
-
-                                    </select>
-
-
-                                    <div class="row justify-content-center  p-1 my-3" style="gap: 1.5rem !important;">
-                                        <div role="button" onclick=";" id=""
-                                        class=" card_choice rounded  site-button col-12 col-sm-5" style="min-width:8rem;">
-                                       <div style="" class="text-center py-4">
-
-
-
-                                           <h4 class="card-title">
-                                               Create a new report
-
-                                           </h4>
-
-                                       </div>
-                                        </div>
-
-                                        {% for report in reports %}
-                                            <div role="button" onclick="SelectDeselectSingleAll(this);" id="card_{{report.uuid}}"
-                                                 class=" card_choice rounded   col-12 col-sm-5 {% if forloop.first %}border-custom {% else %}border-lightgrey{% endif %} " data-option="{{report.uuid}}" style="min-width:8rem;">
-                                                <div style="" class="text-center py-4">
-
-
-
-                                                    <h4 class="card-title">
-                                                        {{report.report_name}} - Created: {{report.datetime_created}}
-
-                                                    </h4>
-
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-
-
-
+                           
                                     </div>
 
-
-
-                                    <script>
-                                        function SelectDeselectSingleAll(e) {
-                                            option_id = "#option_" + e.getAttribute('data-option')
-                                            optionToSelect = document.querySelector(option_id)
-                                            select_field = document.querySelector('#selectReport')
-                                            {
-                                                e.classList.add('border-custom')
-                                                e.classList.remove('border-lightgrey')
-              //Remove borders from others not selected
-
-                                                options_cards = Array.from(e.parentNode.querySelectorAll('.card_choice'))
-                                                for (let i = 0; i < options_cards.length; i++) {
-                                                    if (options_cards[i] != e){
-                                                        options_cards[i].classList.remove('border-custom')
-                                                        options_cards[i].classList.add('border-lightgrey')
-                                                    }
-
-                                                }
-                                                optionToSelect.selected = true;
-                                                select_field.value = optionToSelect.value
-                                                classes = e.classList
-
-                                            }
-                                        };
-                                    </script>
                                 </div>
 
 
@@ -164,6 +102,21 @@
         </div>
     </div>
     {% include "includes/molecules.html" %}
+
+
+
+    <div class="modal fade" id="createNewReportModal" tabindex="-1" aria-labelledby="createNewReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="createNewReportModalLabel">Add a new report</h1>
+                    <button id="closeModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                {% include "includes/add_new_report.html" %}
+
+            </div>
+        </div>
+    </div>
 </div>
 
 

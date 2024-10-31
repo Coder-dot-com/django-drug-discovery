@@ -1,0 +1,23 @@
+<form id="create_report_form" class=""
+      hx-post={% url "create_report_htmx" %}
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+      hx-target="#reportsPage"
+      hx-swap="outerHTML"
+      hx-encoding='multipart/form-data'
+>
+    <div class="modal-body">
+
+
+
+        <div class="form-floating mb-3">
+            <input maxlength="1000" required="" name="report_name" class="form-control" id="floatingInput" placeholder="Enter a name for the report here">
+            <label for="floatingInput">Enter a report name</label>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn site-secondary-button" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn site-button">Add</button>
+    </div>
+</form>

@@ -21,6 +21,22 @@ def create_report_htmx(request):
 
 
 @login_required
+def create_report_molecules_display_htmx(request):
+    
+    
+    report = Report.objects.create(user=request.user,
+                                   report_name = request.POST['report_name'],
+                                   
+                                   
+                                   
+                                   )
+    
+    context = {'report': report}
+    
+    return  render(request, 'view_report_htmx.html', context=context)
+
+
+@login_required
 def get_modal_add_to_report_htmx(request, molecule_uuid):
     
     reports = Report.objects.filter(user=request.user).order_by('datetime_created').reverse()

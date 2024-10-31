@@ -120,3 +120,12 @@ def filter_molecules_htmx(request, uuid):
     rendered_page.headers['Hx-Push-URL'] = url_to_push
     return rendered_page
 
+@login_required
+def load_reports_list_htmx(request):
+    reports = Report.objects.filter(user=request.user).order_by('datetime_created').reverse()
+    
+    context ={
+        'reports': reports
+    }
+
+    return render(request, "includes/reports_list.html", context=context)
