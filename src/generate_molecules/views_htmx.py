@@ -10,6 +10,7 @@ from .views_from_target import render_targets_organism
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from reports.models import Report
 
 @login_required
 def molecules_or_target(request):
@@ -131,11 +132,14 @@ def poll_for_request_completion(request, uuid):
     
     molecules = generation_request.get_molecules()
     molecule_count = molecules.count()
-    
+    reports = Report.objects.filter(user=request.user).order_by('datetime_created').reverse()
+
     if generation_request:
         context = {'generation_request' : generation_request,
                    'molecules': molecules,
                    'molecule_count': molecule_count,
+                   'reports': reports,
+                   
                    }        
         rendered_page =render(request, 'render_molecules_htmx.html', context=context)
         url_to_push =  request.build_absolute_uri(reverse('render_molecules', kwargs={

@@ -1,22 +1,26 @@
+-add ability to create new report from add to report modal
+-fix erro reports not loading 
+-tidy up frontend
+-add send me email alert when molecules have been generated
+-use cpu for molecule generaiton for now
+-make clear generation takes hours for now and will eventually take minutes
 
--add feedback
--add suggest a receptor
--go through everything and test
 
 
--
 
--fix anything that needs fixing
 
 -get to a deployable state
 
 -choose domain
 -create logo
 
+ 
+-(Later) add suggest a receptor
+
 -clear out s3
 -deploy to non gpu instance and add receptors with same db instance for gpu instance
 -test
--find some example receptors and marketing on monday
+-find some example receptors and add and prepare list for marketing
 
 
 -(later) update requests to have status e.g. created creating completed instead of true false and only display in requests if the user actually completes the process
@@ -126,7 +130,7 @@ to do later
 -plan more functionality and features
 
 
-
+- (later) use serverless gpu e.g. runpod services
 
 
 
