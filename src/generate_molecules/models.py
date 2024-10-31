@@ -56,6 +56,7 @@ class GenerationRequest(models.Model):
     
     datetime_created = models.DateTimeField(auto_now_add=True, editable=True)
     uuid = models.UUIDField(default=uuid4)
+    submitted = models.BooleanField(default=False)
     complete = models.BooleanField(default=False)
     choices = [
         ("from_target", "from_target"),

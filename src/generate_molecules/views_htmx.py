@@ -118,6 +118,9 @@ def create_molecule(request, uuid):
     
     generation_request = get_object_or_404(GenerationRequest, user=request.user,uuid=uuid)
     
+    generation_request.submitted = True
+    generation_request.save()
+    
     transaction.on_commit(lambda: generate_molecule.delay(generation_request.id))
     
     context = {'generation_request' : generation_request}
