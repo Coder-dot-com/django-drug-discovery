@@ -1,6 +1,4 @@
--add ability to create new report from add to report modal
--fix erro reports not loading 
--tidy up frontend
+
 -add send me email alert when molecules have been generated
 -use cpu for molecule generaiton for now
 -make clear generation takes hours for now and will eventually take minutes

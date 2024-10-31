@@ -8,7 +8,7 @@ from reports.models import Report
 @login_required
 def list_of_requests(request):
     
-    generation_requests = GenerationRequest.objects.filter(user=request.user).order_by('datetime_created').reverse()
+    generation_requests = GenerationRequest.objects.filter(user=request.user, submitted=True).order_by('datetime_created').reverse()
     
     context = {
         'generation_requests': generation_requests,

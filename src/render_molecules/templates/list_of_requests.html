@@ -15,7 +15,7 @@
                 <div class="d-flex mb-2 px-1">
 
                     Request created: {{generation_request.datetime_created}}
-                    Status: {{generation_request.complete}}
+                    Complete: {{generation_request.complete}}
 
 
                     <a href="{% url "render_molecules" generation_request.uuid %}" class="btn site-button justify-content-end ms-auto">View molecules</a>
