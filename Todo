@@ -1,7 +1,9 @@
--Remove add to report from moplecule cards
 -Add select and select all button to molecule cards
 -Add select all button
--hange add all to add selected to report
+-add deselect all button
+-change add all to add selected to report
+
+-on add display number added to report and number already added that werent added again
 
 
 
